@@ -1,0 +1,2804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Contabilidade digital completa para sua empresa. Gestão contábil, fiscal e tributária com tecnologia e praticidade.">
+    <meta name="author" content="Conecta Contábil">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Conecta Contábil - Contabilidade Online Para Sua Empresa</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <style>
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .jumper {
+            display: flex;
+            gap: 5px;
+        }
+
+        .jumper > div {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: jumper 1.4s ease-in-out infinite both;
+        }
+
+        .jumper > div:nth-child(1) { animation-delay: -0.32s; }
+        .jumper > div:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes jumper {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Hide preloader after page loads */
+        body.loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+            color: #2a2a2a;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header-area {
+            background-color: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .header-area.sticky {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            max-height: 50px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-area.sticky .logo img {
+            max-height: 40px;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav li {
+            margin: 0 20px;
+        }
+
+        .nav li a {
+            color: #2a2a2a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav li a:hover,
+        .nav li a.active {
+            color: #4facfe;
+        }
+
+        .nav li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 0;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transition: width 0.3s ease;
+        }
+
+        .nav li a:hover::after,
+        .nav li a.active::after {
+            width: 100%;
+        }
+
+        .main-orange-button a {
+            background: linear-gradient(105deg, #ff9a00 0%, #ffad33 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-orange-button a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .main-orange-button a:hover::before {
+            left: 100%;
+        }
+
+        .main-orange-button a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 0, 0.4);
+        }
+
+        /* Mobile Menu */
+        .menu-trigger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #2a2a2a;
+            cursor: pointer;
+            position: relative;
+            width: 30px;
+            height: 25px;
+        }
+
+        .menu-trigger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #2a2a2a;
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .menu-trigger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .menu-trigger span:nth-child(2),
+        .menu-trigger span:nth-child(3) {
+            top: 11px;
+        }
+
+        .menu-trigger span:nth-child(4) {
+            top: 22px;
+        }
+
+        /* Main Banner - MODIFICADO PARA INCLUIR IMAGEM DE FUNDO */
+        .main-banner {
+            position: relative;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(79, 172, 254, 0.7) 0%, 
+                    rgba(0, 242, 254, 0.3) 50%, 
+                    rgba(79, 172, 254, 0.8) 100%),
+                linear-gradient(45deg, 
+                    rgba(0, 0, 0, 0.4) 0%, 
+                    transparent 50%, 
+                    rgba(255, 154, 0, 0.2) 100%),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat fixed;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .main-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at center, 
+                    transparent 0%, 
+                    rgba(79, 172, 254, 0.1) 50%, 
+                    rgba(79, 172, 254, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .main-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .banner-floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape.shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape.shape-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape.shape-3 {
+            width: 80px;
+            height: 80px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-shape.orange-accent {
+            background: rgba(255, 154, 0, 0.4);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .accounting-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .accounting-icon {
+            position: absolute;
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.3);
+            animation: iconFloat 8s ease-in-out infinite;
+        }
+
+        .accounting-icon.icon-calculator {
+            top: 15%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        .accounting-icon.icon-chart {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 3s;
+        }
+
+        .accounting-icon.icon-document {
+            top: 70%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .accounting-icon.icon-shield {
+            top: 40%;
+            left: 5%;
+            animation-delay: 7s;
+        }
+
+        .accounting-icon.orange-accent {
+            color: rgba(255, 154, 0, 0.6);
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-15px) scale(1.1);
+            }
+        }
+
+        .header-text {
+            position: relative;
+            z-index: 10;
+            color: white;
+        }
+
+        .header-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .right-image {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .image-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff9a00, #ffad33);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 154, 0, 0.3);
+            z-index: 3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15) 0%, rgba(255, 154, 0, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 15px;
+        }
+
+        .image-wrapper:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .right-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+            transition: transform 0.3s ease;
+            display: block;
+            object-fit: cover;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        .about-us .right-image img {
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .main-orange-button, .main-white-button {
+            display: inline-block;
+        }
+
+        .main-white-button a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-white-button a:hover {
+            background: white;
+            color: #4facfe;
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .services:after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='261' height='368' viewBox='0 0 261 368' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h261v368H0z' fill='%23f0f8ff' opacity='0.3'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 0;
+            bottom: -300px;
+            width: 261px;
+            height: 368px;
+            z-index: 0;
+        }
+
+        .services:before {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='1136' height='244' viewBox='0 0 1136 244' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1136v244H0z' fill='%23f0f8ff' opacity='0.2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1136px;
+            height: 244px;
+            z-index: 0;
+        }
+
+        .services .section-heading {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-heading h4 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2a2a2a;
+            margin-bottom: 20px;
+        }
+
+        .section-heading h4 em {
+            color: #ff9a00;
+            font-style: normal;
+        }
+
+        .section-heading img {
+            margin: 20px 0;
+        }
+
+        .section-heading p {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            border-top-right-radius: 50px;
+            transition: all .3s;
+            margin-bottom: 30px;
+        }
+
+        .service-item .icon {
+            margin-left: 0px;
+            margin-bottom: 30px;
+            background-repeat: no-repeat;
+            width: 50px;
+            height: 50px;
+            transition: all .3s;
+        }
+
+        .service-item h4 {
+            transition: all .3s;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2a2a2a;
+        }
+
+        .service-item p {
+            transition: all .3s;
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .service-item .text-button {
+            margin-top: 20px;
+        }
+
+        .service-item .text-button a {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all .3s;
+        }
+
+        .service-item .text-button a i {
+            margin-left: 5px;
+            transition: all .3s;
+        }
+
+        .service-item:hover h4,
+        .service-item:hover p,
+        .service-item:hover .text-button a {
+            color: #fff;
+        }
+
+        .service-item:hover .text-button a i {
+            transform: translateX(3px);
+        }
+
+        .service-item:hover {
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='200' viewBox='0 0 300 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='serviceGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234facfe;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2300f2fe;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='200' fill='url(%23serviceGrad)'/%3E%3C/svg%3E");
+            background-position: right top;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Service Icons */
+        .first-service .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='8' width='34' height='34' rx='4' fill='%234facfe'/%3E%3Cpath d='M15 20h20M15 25h20M15 30h15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        }
+
+        .first-service:hover .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='8' width='34' height='34' rx='4' fill='%23ff9a00'/%3E%3Cpath d='M15 20h20M15 25h20M15 30h15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        }
+
+        .second-service .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='17' fill='%234facfe'/%3E%3Cpath d='M18 32l4-10 4 6 6-8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='20' r='2' fill='white'/%3E%3C/svg%3E");
+        }
+
+        .second-service:hover .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='17' fill='%23ff9a00'/%3E%3Cpath d='M18 32l4-10 4 6 6-8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='20' r='2' fill='white'/%3E%3C/svg%3E");
+        }
+
+        .third-service .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='15' width='30' height='25' rx='2' fill='%234facfe'/%3E%3Crect x='15' y='10' width='20' height='8' rx='1' fill='%234facfe'/%3E%3Cpath d='M18 25h14M18 30h10' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+        }
+
+        .third-service:hover .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='15' width='30' height='25' rx='2' fill='%23ff9a00'/%3E%3Crect x='15' y='10' width='20' height='8' rx='1' fill='%23ff9a00'/%3E%3Cpath d='M18 25h14M18 30h10' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+        }
+
+        .fourth-service .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='17' fill='%234facfe'/%3E%3Cpath d='M25 15v20M15 25h20' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='18' r='2' fill='white'/%3E%3Ccircle cx='18' cy='25' r='2' fill='white'/%3E%3Ccircle cx='32' cy='25' r='2' fill='white'/%3E%3Ccircle cx='25' cy='32' r='2' fill='white'/%3E%3C/svg%3E");
+        }
+
+        .fourth-service:hover .icon {
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='17' fill='%23ff9a00'/%3E%3Cpath d='M25 15v20M15 25h20' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='18' r='2' fill='white'/%3E%3Ccircle cx='18' cy='25' r='2' fill='white'/%3E%3Ccircle cx='32' cy='25' r='2' fill='white'/%3E%3Ccircle cx='25' cy='32' r='2' fill='white'/%3E%3C/svg%3E");
+        }
+
+        /* About Section */
+        .about-us {
+            padding: 100px 0;
+        }
+
+        .left-text {
+            padding-right: 30px;
+        }
+
+        .left-text h4 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2a2a2a;
+        }
+
+        .left-text h4 em {
+            color: #ff9a00;
+            font-style: normal;
+        }
+
+        .left-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .box-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .box-item:hover {
+            background: #4facfe;
+            color: white;
+            border-left-color: #ff9a00;
+            transform: translateX(10px);
+        }
+
+        .box-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .box-item h4 a {
+            color: #2a2a2a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .box-item:hover h4 a {
+            color: white;
+        }
+
+        .box-item p {
+            margin: 0;
+        }
+
+        .box-item:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gradient-button {
+            margin-top: 30px;
+        }
+
+        .gradient-button a {
+            background: linear-gradient(105deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .gradient-button a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .right-image {
+            text-align: center;
+        }
+
+        .right-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Clients Section - Layout atualizado */
+        .the-clients {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .naccs {
+            position: relative;
+        }
+
+        /* Layout de depoimentos concentrado e organizado */
+        .testimonials-list {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .testimonial-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-item:last-child {
+            border-bottom: none;
+        }
+
+        .testimonial-item:hover {
+            background: rgba(79, 172, 254, 0.05);
+            border-radius: 10px;
+            margin: 0 -20px;
+            padding: 25px 20px;
+        }
+
+        .testimonial-item.active {
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 10px;
+            margin: 0 -20px;
+            padding: 25px 20px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .testimonial-info {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .testimonial-info h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2a2a2a;
+            margin-bottom: 5px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .testimonial-info .date {
+            font-size: 13px;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .testimonial-item .category {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            background: #f5f6fa;
+            padding: 8px 18px;
+            border-radius: 20px;
+            margin: 0 20px;
+            min-width: 100px;
+        }
+
+        .testimonial-item .rating {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            min-width: 100px;
+            justify-content: flex-end;
+        }
+
+        .testimonial-item .rating .fa-star {
+            color: #4facfe;
+            font-size: 14px;
+        }
+
+        .testimonial-item .rating .rating-number {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4facfe;
+            margin-left: 8px;
+        }
+
+        /* Ajustes no layout do grid */
+        .naccs .grid .row {
+            align-items: flex-start;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .testimonials-list {
+                margin-bottom: 30px;
+            }
+            
+            .testimonial-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 20px 0;
+            }
+            
+            .testimonial-item .category {
+                margin: 5px 0 0 0;
+                text-align: left;
+                align-self: flex-start;
+            }
+            
+            .testimonial-item .rating {
+                margin-top: 5px;
+                justify-content: flex-start;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-item .category {
+                display: none;
+            }
+            
+            .testimonials-list {
+                padding: 20px 15px;
+            }
+        }
+
+        .nacc {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nacc li {
+            display: none;
+        }
+
+        .nacc li.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .client-content {
+            background: white;
+            /* Múltiplas opções de caminho para a imagem PNG */
+            background-image: url('Fundodpmt.png'), url('./Fundodpmt.png'), url('../Fundodpmt.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Overlay de fallback */
+        .client-content .overlay-bg {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.05) 0%, rgba(255, 154, 0, 0.05) 100%);
+            border-radius: 15px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Aspas modernas e estilizadas */
+        .client-content::before {
+            content: '❝❞';
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            font-size: 90px;
+            color: rgba(255, 255, 255, 0.35);
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            line-height: 0.7;
+            z-index: 3;
+            letter-spacing: -10px;
+        }
+
+        /* Aspas de fechamento - removidas para ficar igual à imagem */
+        .client-content::after {
+            content: '';
+        }
+
+        .client-content p {
+            font-size: 17px;
+            line-height: 1.65;
+            color: white;
+            margin-top: 55px;
+            margin-bottom: 40px;
+            font-style: normal;
+            padding: 0 25px;
+            position: relative;
+            z-index: 4;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .down-content {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Cliente Icon Style - Ícones das profissões */
+        .client-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .client-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.5);
+        }
+
+        .client-icon.e-commerce {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .client-icon.e-commerce:hover {
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+        }
+
+        .client-icon.consultoria {
+            background: linear-gradient(135deg, #6f42c1 0%, #8e44ad 100%);
+            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+        }
+
+        .client-icon.consultoria:hover {
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.5);
+        }
+
+        .client-icon.mei {
+            background: linear-gradient(135deg, #fd7e14 0%, #f39c12 100%);
+            box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+        }
+
+        .client-icon.mei:hover {
+            box-shadow: 0 8px 25px rgba(253, 126, 20, 0.5);
+        }
+
+        .client-icon.restaurante {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .client-icon.restaurante:hover {
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5);
+        }
+
+        .client-icon.saude {
+            background: linear-gradient(135deg, #17a2b8 0%, #3498db 100%);
+            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+        }
+
+        .client-icon.saude:hover {
+            box-shadow: 0 8px 25px rgba(23, 162, 184, 0.5);
+        }
+
+        .right-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2a2a2a;
+        }
+
+        .right-content span {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Pricing Section */
+        .pricing-plans {
+            padding: 100px 0;
+        }
+
+        .pricing-item {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .pricing-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-item:hover {
+            transform: translateY(-10px);
+            border-color: #4facfe;
+        }
+
+        .pricing-item.active {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            transform: scale(1.05);
+            border-color: #ff9a00;
+        }
+
+        .pricing-item.active::before {
+            background: #ff9a00;
+            transform: scaleX(1);
+        }
+
+        .pricing-item.active .icon i {
+            color: white;
+        }
+
+        .pricing-item h4 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .pricing-item .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ff9a00;
+            margin-bottom: 30px;
+        }
+
+        .pricing-item .price span {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .pricing-item.active .price {
+            color: white;
+        }
+
+        .pricing-item .icon {
+            margin-bottom: 30px;
+        }
+
+        .pricing-item .icon i {
+            font-size: 60px;
+            color: #4facfe;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-item:hover .icon i {
+            transform: scale(1.1);
+        }
+
+        .pricing-item ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .pricing-item ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .pricing-item ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #4facfe;
+            margin-right: 10px;
+        }
+
+        .pricing-item.active ul li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-item.active ul li::before {
+            color: #ff9a00;
+        }
+
+        .border-button a {
+            border: 2px solid #4facfe;
+            color: #4facfe;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .border-button a:hover {
+            background: #4facfe;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .pricing-item.active .border-button a {
+            border-color: white;
+            color: white;
+        }
+
+        .pricing-item.active .border-button a:hover {
+            background: white;
+            color: #4facfe;
+        }
+
+        /* Newsletter Section */
+        #newsletter {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 100px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 154, 0, 0.1);
+            border-radius: 50%;
+        }
+
+        #newsletter .section-heading h4 {
+            color: white;
+        }
+
+        #newsletter .section-heading p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #newsletter form {
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #newsletter .email {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 15px 25px;
+            color: white;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        #newsletter .email:focus {
+            outline: none;
+            border-color: #ff9a00;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        #newsletter .email::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        #newsletter .main-button {
+            background: linear-gradient(105deg, #ff9a00 0%, #ffad33 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        #newsletter .main-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 0, 0.4);
+        }
+
+        /* Footer */
+        .footer-widget {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-widget h4 {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-widget h4::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff9a00;
+        }
+
+        .footer-widget p,
+        .footer-widget ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-widget ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .footer-widget ul li::before {
+            content: '\f105';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #ff9a00;
+        }
+
+        .footer-widget ul li a:hover {
+            color: #ff9a00;
+            padding-left: 10px;
+        }
+
+        .footer-widget .logo img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .copyright-text {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .copyright-text p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        .copyright-text .fa-heart {
+            color: #ff9a00;
+            animation: heartbeat 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Contact Modal */
+        .contact-modal {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-form {
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        .contact-form.show {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn_red {
+            background: linear-gradient(105deg, #ff9a00 0%, #ffad33 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn_red:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 15px 15px;
+                padding: 20px;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-trigger {
+                display: block;
+            }
+
+            .header-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .header-text h2 {
+                font-size: 36px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .right-image {
+                margin-top: 30px;
+            }
+
+            .left-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+
+            .section-heading h4 {
+                font-size: 28px;
+            }
+
+            .naccs .grid .row {
+                flex-direction: column;
+            }
+
+            .testimonials-list {
+                margin-bottom: 30px;
+            }
+
+            .service-item {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .service-item .icon {
+                margin: 0 auto 30px auto;
+            }
+
+            .main-banner {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-text {
+                text-align: center;
+            }
+
+            .header-text h2 {
+                font-size: 28px;
+            }
+
+            .header-text p {
+                font-size: 16px;
+            }
+
+            .right-image {
+                margin-top: 40px;
+            }
+
+            .right-image img,
+            .image-wrapper {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .image-badge {
+                top: 15px;
+                right: 15px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .pricing-item .icon img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .client-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .section-heading h4 {
+                font-size: 24px;
+            }
+
+            .service-item,
+            .pricing-item {
+                margin-bottom: 30px;
+            }
+
+            .service-item {
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .service-item .icon {
+                margin: 0 auto 20px auto;
+            }
+
+            .service-item h4 {
+                font-size: 18px;
+            }
+
+            .service-item p {
+                font-size: 14px;
+            }
+
+            .accounting-icon {
+                font-size: 24px;
+            }
+
+            .floating-shape {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .services,
+            .about-us,
+            .the-clients,
+            .pricing-plans,
+            #newsletter {
+                padding: 50px 0;
+            }
+
+            .pricing-item.active {
+                transform: none;
+            }
+
+            .pricing-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .main-banner {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-text h2 {
+                font-size: 24px;
+            }
+
+            .header-text p {
+                font-size: 16px;
+            }
+
+            .main-orange-button a,
+            .main-white-button a {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .service-item {
+                padding: 25px 15px;
+                border-top-right-radius: 30px;
+            }
+
+            .service-item .icon {
+                width: 40px;
+                height: 40px;
+                margin: 0 auto 20px auto;
+                background-size: contain !important;
+            }
+
+            .service-item h4 {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .service-item p {
+                font-size: 13px;
+                margin-bottom: 15px;
+            }
+
+            .service-item .text-button a {
+                font-size: 13px;
+            }
+
+            .pricing-item {
+                padding: 30px 20px;
+            }
+
+            .pricing-item .price {
+                font-size: 36px;
+            }
+
+            .client-content {
+                padding: 30px 20px;
+            }
+
+            .testimonials-list {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
+
+            .testimonial-item {
+                padding: 15px 0;
+            }
+
+            .testimonial-item .category {
+                display: none;
+            }
+
+            .col-lg-3 {
+                margin-bottom: 20px;
+            }
+
+            .main-banner {
+                background-attachment: scroll;
+                min-height: 80vh;
+            }
+        }
+
+        /* Animation Classes */
+        .wow {
+            visibility: hidden;
+        }
+
+        .fadeIn {
+            animation: fadeIn 1s ease;
+        }
+
+        .fadeInUp {
+            animation: fadeInUp 1s ease;
+        }
+
+        .fadeInDown {
+            animation: fadeInDown 1s ease;
+        }
+
+        .fadeInLeft {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .fadeInRight {
+            animation: fadeInRight 1s ease;
+        }
+
+        .show-up {
+            animation: showUp 1s ease;
+        }
+
+        .slideInDown {
+            animation: slideInDown 0.75s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes showUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success message */
+        .success-message {
+            background: linear-gradient(105deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Additional utility classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .d-none { display: none !important; }
+        .d-block { display: block !important; }
+        .d-flex { display: flex !important; }
+        .justify-content-center { justify-content: center !important; }
+        .align-items-center { align-items: center !important; }
+        .w-100 { width: 100% !important; }
+        .h-100 { height: 100% !important; }
+        .position-relative { position: relative !important; }
+        .position-absolute { position: absolute !important; }
+        .overflow-hidden { overflow: hidden !important; }
+
+        /* Print styles */
+        @media print {
+            .header-area,
+            #newsletter,
+            .floating-shape,
+            .accounting-icons {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="#top" class="logo">
+                            <img src="assets/images/logo.png" alt="Conecta Contábil" 
+                                 style="max-height: 50px;" 
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSI1IiB5PSIzMCIgZm9udC1mYW1pbHk9IlJvYm90bywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzRmYWNmZSI+Q29uZWN0YTwvdGV4dD4KPHRleHQgeD0iOTAiIHk9IjMwIiBmb250LWZhbWlseT0iUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmY5YTAwIj5Db250w6FiaWw8L3RleHQ+Cjwvc3ZnPgo=';">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="#top" class="active">Início</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#clients">Clientes</a></li>
+                            <li><a href="#pricing">Planos</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                        <button class='menu-trigger'>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <!-- ***** Menu End ***** -->
+                        <div class="main-orange-button">
+                            <a href="https://onvio.com.br/clientcenter/pt/auth?r=%2Fhome" target="_blank">Login</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <!-- Elementos Visuais Flutuantes -->
+        <div class="banner-floating-elements">
+            <div class="floating-shape shape-1 orange-accent"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3 orange-accent"></div>
+            
+            <!-- Pequenos elementos laranja -->
+            <div class="floating-shape" style="top: 15%; left: 70%; width: 30px; height: 30px; background: rgba(255, 154, 0, 0.4); border-radius: 50%; animation-delay: 1s;"></div>
+            <div class="floating-shape" style="bottom: 45%; left: 25%; width: 20px; height: 20px; background: rgba(255, 154, 0, 0.3); border-radius: 50%; animation-delay: 3s;"></div>
+            <div class="floating-shape" style="top: 70%; right: 35%; width: 25px; height: 25px; background: rgba(255, 154, 0, 0.4); border-radius: 50%; animation-delay: 5s;"></div>
+        </div>
+        
+        <!-- Ícones de Contabilidade -->
+        <div class="accounting-icons">
+            <i class="fas fa-calculator accounting-icon icon-calculator"></i>
+            <i class="fas fa-chart-line accounting-icon icon-chart orange-accent"></i>
+            <i class="fas fa-file-invoice-dollar accounting-icon icon-document"></i>
+            <i class="fas fa-shield-alt accounting-icon icon-shield orange-accent"></i>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2 align-self-center text-center">
+                            <div class="left-content show-up header-text wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h2>Contabilidade Digital Completa Para Sua Empresa</h2>
+                                        <p>Transforme a gestão contábil da sua empresa com nossa plataforma digital. Relatórios em tempo real, suporte especializado e preços justos para empresas de todos os tamanhos.</p>
+                                        <div class="buttons">
+                                            <div class="main-orange-button"><a href="#pricing">Conheça Nossos Planos</a></div>
+                                            <div class="main-white-button"><a href="#about">Saiba Mais</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Services Section Start ***** -->
+    <div id="services" class="services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <h4>Nossos <em>Serviços</em> de Contabilidade Digital</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNmZjlhMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>Oferecemos soluções completas em contabilidade digital para empresas de todos os portes. Tecnologia, praticidade e suporte especializado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="service-item first-service animate-on-scroll">
+                        <div class="icon"></div>
+                        <h4>Gestão Contábil Completa</h4>
+                        <p>Contabilidade automatizada: balancetes e DREs sempre em dia, com total precisão e agilidade.</p>
+                        <div class="text-button">
+                            <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item second-service animate-on-scroll">
+                        <div class="icon"></div>
+                        <h4>Declaração de IR</h4>
+                        <p>IR feito por especialistas. Maximize sua restituição e evite problemas com a Receita.</p>
+                        <div class="text-button">
+                            <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item third-service animate-on-scroll">
+                        <div class="icon"></div>
+                        <h4>Abertura de Empresas</h4>
+                        <p>Abra sua empresa em até 10 dias. Cuidamos da burocracia para você focar no seu negócio.</p>
+                        <div class="text-button">
+                            <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item fourth-service animate-on-scroll">
+                        <div class="icon"></div>
+                        <h4>Consultoria Tributária</h4>
+                        <p>Planejamento tributário inteligente para reduzir custos e aumentar a eficiência fiscal da sua empresa.</p>
+                        <div class="text-button">
+                            <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Services Section End ***** -->
+
+    <!-- ***** About Us Section Start ***** -->
+    <div id="about" class="about-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="section-heading">
+                        <h4>Por que escolher a <em>Conecta Contábil</em>?</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNmZjlhMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>Somos especialistas em contabilidade digital, oferecendo soluções modernas e eficientes para empresas que buscam praticidade e segurança na gestão contábil.</p>
+                    </div>
+                    <div class="left-text">
+                        <h4>Contabilidade Digital que <em>Transforma</em> seu Negócio</h4>
+                        <p>Nossa missão é simplificar a vida do empresário através da tecnologia. Oferecemos um serviço contábil completo, digital e humanizado, com o suporte de profissionais experientes e uma plataforma moderna.</p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="box-item animate-on-scroll">
+                                    <h4><a href="#">Tecnologia Avançada</a></h4>
+                                    <p>Plataforma digital moderna com relatórios em tempo real e integração com principais sistemas.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="box-item animate-on-scroll">
+                                    <h4><a href="#">Suporte Especializado</a></h4>
+                                    <p>Equipe de contadores experientes sempre disponíveis para esclarecer suas dúvidas.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="box-item animate-on-scroll">
+                                    <h4><a href="#">Transparência Total</a></h4>
+                                    <p>Acesse relatórios e documentos a qualquer hora, com total transparência nos processos.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="box-item animate-on-scroll">
+                                    <h4><a href="#">Preços Justos</a></h4>
+                                    <p>Planos flexíveis e preços acessíveis para empresas de todos os tamanhos.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <p>Com mais de 5 anos no mercado e milhares de clientes satisfeitos, oferecemos a melhor experiência em contabilidade digital do Brasil.</p>
+                                <div class="gradient-button">
+                                    <a href="#pricing">Conheça Nossos Planos</a>
+                                </div>
+                                <span>*Primeira consultoria gratuita</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Escritório Moderno Contabilidade">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** About Us Section End ***** -->
+
+    <!-- ***** Clients Section Start ***** -->
+    <div id="clients" class="the-clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Veja o que nossos <em>clientes</em> falam</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNmZjlhMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>Empresários que escolheram a Conecta Contábil e transformaram a gestão contábil de seus negócios.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="naccs">
+                        <div class="grid">
+                            <div class="row">
+                                <div class="col-lg-6 align-self-center">
+                                    <div class="testimonials-list">
+                                        <div class="testimonial-item active" onclick="showTestimonial(1)">
+                                            <div class="testimonial-info">
+                                                <h4>Ana Silva</h4>
+                                                <span class="date">Janeiro 2024</span>
+                                            </div>
+                                            <div class="category">E-commerce</div>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <span class="rating-number">5.0</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="testimonial-item" onclick="showTestimonial(2)">
+                                            <div class="testimonial-info">
+                                                <h4>Carlos Mendes</h4>
+                                                <span class="date">Dezembro 2023</span>
+                                            </div>
+                                            <div class="category">Consultoria</div>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <span class="rating-number">4.8</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="testimonial-item" onclick="showTestimonial(3)">
+                                            <div class="testimonial-info">
+                                                <h4>Juliana Santos</h4>
+                                                <span class="date">Fevereiro 2024</span>
+                                            </div>
+                                            <div class="category">MEI</div>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <span class="rating-number">5.0</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="testimonial-item" onclick="showTestimonial(4)">
+                                            <div class="testimonial-info">
+                                                <h4>Roberto Costa</h4>
+                                                <span class="date">Março 2024</span>
+                                            </div>
+                                            <div class="category">Restaurante</div>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <span class="rating-number">4.9</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="testimonial-item" onclick="showTestimonial(5)">
+                                            <div class="testimonial-info">
+                                                <h4>Dra. Marina</h4>
+                                                <span class="date">Abril 2024</span>
+                                            </div>
+                                            <div class="category">Clínica</div>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <span class="rating-number">5.0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <ul class="nacc">
+                                        <li class="active">
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="client-content">
+                                                                <p>A Conecta Contábil revolucionou a gestão contábil da minha loja online. Agora tenho mais tempo para focar nas vendas e crescimento do negócio. O suporte é excepcional!</p>
+                                                            </div>
+                                                            <div class="down-content">
+                                                                <div class="client-icon e-commerce">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </div>
+                                                                <div class="right-content">
+                                                                    <h4>Ana Silva</h4>
+                                                                    <span>Proprietária, Loja Bella</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="client-content">
+                                                                <p>Migrei toda minha contabilidade para a Conecta Contábil e não me arrependo. A plataforma é intuitiva, os relatórios são claros e o atendimento é sempre muito profissional.</p>
+                                                            </div>
+                                                            <div class="down-content">
+                                                                <div class="client-icon consultoria">
+                                                                    <i class="fas fa-briefcase"></i>
+                                                                </div>
+                                                                <div class="right-content">
+                                                                    <h4>Carlos Mendes</h4>
+                                                                    <span>Diretor, CM Consultoria</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="client-content">
+                                                                <p>Como MEI, sempre tive dificuldades com a parte contábil. A Conecta Contábil simplificou tudo! Agora fico tranquila sabendo que está tudo organizado e em dia.</p>
+                                                            </div>
+                                                            <div class="down-content">
+                                                                <div class="client-icon mei">
+                                                                    <i class="fas fa-user"></i>
+                                                                </div>
+                                                                <div class="right-content">
+                                                                    <h4>Juliana Santos</h4>
+                                                                    <span>MEI, Juliana Beauty</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="client-content">
+                                                                <p>Desde que começei a usar os serviços da Conecta, minha gestão contábil ficou muito mais organizada. O controle de custos do restaurante melhorou significativamente!</p>
+                                                            </div>
+                                                            <div class="down-content">
+                                                                <div class="client-icon restaurante">
+                                                                    <i class="fas fa-utensils"></i>
+                                                                </div>
+                                                                <div class="right-content">
+                                                                    <h4>Roberto Costa</h4>
+                                                                    <span>Proprietário, Sabor & Arte</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="client-content">
+                                                                <p>Excelente trabalho! A contabilidade da minha clínica está sempre atualizada. Posso focar totalmente nos meus pacientes sem me preocupar com questões fiscais.</p>
+                                                            </div>
+                                                            <div class="down-content">
+                                                                <div class="client-icon saude">
+                                                                    <i class="fas fa-stethoscope"></i>
+                                                                </div>
+                                                                <div class="right-content">
+                                                                    <h4>Dra. Marina Oliveira</h4>
+                                                                    <span>Dentista, Clínica Sorrir</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Clients Section End ***** -->
+
+    <!-- ***** Pricing Plans Section Start ***** -->
+    <div id="pricing" class="pricing-plans">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Escolha o <em>plano ideal</em> para sua empresa</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNmZjlhMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>Planos flexíveis e transparentes para empresas de todos os tamanhos. Sem taxas ocultas, sem surpresas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-item animate-on-scroll">
+                        <div class="icon">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="MEI" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <h4>Plano MEI</h4>
+                        <div class="price">R$ 49<span>/mês</span></div>
+                        <ul>
+                            <li>Declaração Anual DASN-SIMEI</li>
+                            <li>Suporte via WhatsApp</li>
+                            <li>Consultoria básica</li>
+                            <li>Portal do cliente</li>
+                            <li>Relatórios mensais</li>
+                        </ul>
+                        <div class="border-button">
+                            <a href="#contact" onclick="selectPlan('MEI')">Escolher Plano</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-item active animate-on-scroll">
+                        <div class="icon">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Empresarial" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <h4>Plano Empresarial</h4>
+                        <div class="price">R$ 199<span>/mês</span></div>
+                        <ul>
+                            <li>Gestão Contábil Completa</li>
+                            <li>Apuração de Impostos</li>
+                            <li>Departamento Pessoal</li>
+                            <li>Suporte prioritário</li>
+                            <li>Relatórios avançados</li>
+                        </ul>
+                        <div class="border-button">
+                            <a href="#contact" onclick="selectPlan('Empresarial')">Escolher Plano</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-item animate-on-scroll">
+                        <div class="icon">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Premium" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <h4>Plano Premium</h4>
+                        <div class="price">R$ 399<span>/mês</span></div>
+                        <ul>
+                            <li>Tudo do Plano Empresarial</li>
+                            <li>Contador Dedicado</li>
+                            <li>Consultoria Tributária Ilimitada</li>
+                            <li>Planejamento Estratégico</li>
+                            <li>Suporte 24h</li>
+                        </ul>
+                        <div class="border-button">
+                            <a href="#contact" onclick="selectPlan('Premium')">Escolher Plano</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Pricing Plans Section End ***** -->
+
+    <!-- ***** Contact Section Start ***** -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-modal">
+                        <h4 style="color: white; text-align: center; margin-bottom: 30px;">Entre em Contato</h4>
+                        <form class="contact-form" id="contactForm">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Seu Nome" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Seu E-mail" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="tel" name="phone" placeholder="Seu Telefone" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="company" placeholder="Nome da Empresa">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea name="message" placeholder="Sua Mensagem" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn_red">Enviar Mensagem</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="success-message" id="successMessage">
+                            <p><i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact Section End ***** -->
+
+    <!-- ***** Newsletter Section Start ***** -->
+    <footer id="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Receba dicas contábeis e novidades em seu e-mail</h4>
+                        <p>Mantenha-se atualizado com as últimas mudanças na legislação fiscal e dicas para otimizar sua gestão contábil.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-3">
+                    <form id="newsletterForm" action="#" method="GET">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    <input type="email" name="email" class="email" placeholder="Seu E-mail..." autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    <button type="submit" class="main-button">Inscrever-se <i class="fa fa-angle-right"></i></button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Contato</h4>
+                        <p>Diadema - SP, 09920-640, Brasil</p>
+                        <p><a href="tel:+5511994080776">(11) 99408-0776</a></p>
+                        <p><a href="mailto:contato@conectacontabil.com.br">contato@conectacontabil.com.br</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li><a href="#services">Gestão Contábil</a></li>
+                            <li><a href="#services">Declaração IR</a></li>
+                            <li><a href="#services">Abertura de Empresa</a></li>
+                            <li><a href="#services">Consultoria Tributária</a></li>
+                            <li><a href="#pricing">Planos</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Links Úteis</h4>
+                        <ul>
+                            <li><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei" target="_blank">Portal do MEI</a></li>
+                            <li><a href="https://www.gov.br/receitafederal/pt-br" target="_blank">Receita Federal</a></li>
+                            <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/declaracoes-e-demonstrativos/sped-contabil" target="_blank">SPED Contábil</a></li>
+                            <li><a href="https://www.gov.br/esocial/pt-br" target="_blank">eSocial</a></li>
+                            <li><a href="https://www8.receita.fazenda.gov.br/simplesnacional/" target="_blank">Simples Nacional</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Sobre a Conecta Contábil</h4>
+                        <div class="logo">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Conecta Contábil" style="max-width: 150px; border-radius: 10px; filter: brightness(1.2);">
+                        </div>
+                        <p>Contabilidade digital que simplifica a gestão fiscal e contábil da sua empresa com tecnologia e suporte especializado.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>Copyright © 2024 Conecta Contábil - Contabilidade Online. Todos os Direitos Reservados. 
+                        <br>Desenvolvido com <i class="fa fa-heart"></i> para simplificar sua vida empresarial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Newsletter Section End ***** -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        // Simple preloader removal - works without jQuery
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.display = 'none';
+                }
+            }, 500);
+        });
+
+        // Fallback preloader removal
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+                setTimeout(function() {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) {
+                        preloader.style.display = 'none';
+                    }
+                }, 1000);
+            }, 2000); // Remove preloader after 2 seconds max
+        });
+
+        // Emergency preloader removal - fallback
+        setTimeout(function() {
+            document.body.classList.add('loaded');
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        }, 3000); // Force remove after 3 seconds
+
+        // Check if jQuery is available and start main functions
+        function initializeApp() {
+            if (typeof jQuery !== 'undefined') {
+                // jQuery is available, run main app
+                $(function() {
+                    startMainApplication();
+                });
+            } else {
+                // jQuery not available, try again or use vanilla JS
+                setTimeout(function() {
+                    if (typeof jQuery !== 'undefined') {
+                        $(function() {
+                            startMainApplication();
+                        });
+                    } else {
+                        console.warn('jQuery failed to load, using fallback functionality');
+                        startBasicFunctionality();
+                    }
+                }, 1000);
+            }
+        }
+
+        function startMainApplication() {
+            "use strict";
+
+            // Global variables
+            window.currentTestimonial = 1;
+
+            // Additional preloader removal with jQuery
+            $(window).on('load', function() {
+                $('body').addClass('loaded');
+                setTimeout(function() {
+                    $('#preloader').fadeOut('slow');
+                }, 300);
+            });
+
+            // Header scroll effect
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                var box = $('.header-area').height();
+                var header = $('.header-area');
+
+                if (scroll >= box) {
+                    header.addClass("sticky");
+                } else {
+                    header.removeClass("sticky");
+                }
+            });
+
+            // Mobile menu toggle
+            $('.menu-trigger').on('click', function() {
+                $(this).toggleClass('active');
+                $('.nav').toggleClass('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            $('.nav a').on('click', function() {
+                $('.nav').removeClass('active');
+                $('.menu-trigger').removeClass('active');
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]:not([href="#"])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top - 90
+                        }, 700);
+                        return false;
+                    }
+                }
+            });
+
+            // Newsletter form submission
+            $('#newsletterForm').on('submit', function(e) {
+                e.preventDefault();
+                var email = $(this).find('.email').val();
+                if (email) {
+                    // Show loading
+                    var button = $(this).find('.main-button');
+                    var originalText = button.html();
+                    button.html('<span class="loading"></span> Inscrevendo...');
+                    
+                    // Simulate API call
+                    setTimeout(function() {
+                        alert('Obrigado por se inscrever! Você receberá nossas novidades em breve.');
+                        $('#newsletterForm')[0].reset();
+                        button.html(originalText);
+                    }, 2000);
+                }
+            });
+
+            // Contact form submission
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var button = form.find('.btn_red');
+                var originalText = button.text();
+                
+                // Show loading
+                button.html('<span class="loading"></span> Enviando...');
+                
+                // Simulate API call
+                setTimeout(function() {
+                    form[0].reset();
+                    $('#successMessage').addClass('show');
+                    button.text(originalText);
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        $('#successMessage').removeClass('show');
+                    }, 5000);
+                }, 2000);
+            });
+
+            // Animate elements on scroll
+            function animateOnScroll() {
+                $('.animate-on-scroll').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('animated');
+                    }
+                });
+            }
+
+            // Global animateOnScroll function
+            window.animateOnScroll = animateOnScroll;
+
+            $(window).on('scroll', animateOnScroll);
+            animateOnScroll(); // Run on page load
+
+            // Add active class to navigation based on scroll position
+            $(window).scroll(function() {
+                var scrollDistance = $(window).scrollTop();
+
+                $('section, .main-banner, .services, .about-us, .the-clients, .pricing-plans').each(function(i) {
+                    if ($(this).position().top <= scrollDistance + 150) {
+                        $('.nav a.active').removeClass('active');
+                        $('.nav a').eq(i).addClass('active');
+                    }
+                });
+            });
+
+        // Global functions para depoimentos com novo layout
+        window.showTestimonial = function(index) {
+            // Remove active class from all testimonial items and testimonials
+            $('.testimonial-item').removeClass('active');
+            $('.nacc li').removeClass('active');
+            
+            // Add active class to selected testimonial item and testimonial
+            $('.testimonial-item').eq(index - 1).addClass('active');
+            $('.nacc li').eq(index - 1).addClass('active');
+        };
+
+        window.toggleContactForm = function() {
+            var form = $('.contact-form');
+            if (form.hasClass('show')) {
+                form.removeClass('show');
+            } else {
+                form.addClass('show');
+                $('html, body').animate({
+                    scrollTop: $('#contact').offset().top - 100
+                }, 700);
+            }
+        };
+
+        window.selectPlan = function(planName) {
+            // Show contact form and pre-fill message
+            $('.contact-form').addClass('show');
+            $('textarea[name="message"]').val('Olá! Gostaria de contratar o Plano ' + planName + '. Por favor, entrem em contato comigo.');
+            
+            // Scroll to contact form
+            $('html, body').animate({
+                scrollTop: $('#contact').offset().top - 100
+            }, 700);
+        };
+
+        // Initialize AOS alternative
+        $('.wow').each(function() {
+            $(this).css('visibility', 'visible');
+        });
+
+        // Initialize testimonials and start auto-rotation
+        window.showTestimonial(1);
+
+        // Testimonial auto-rotation (agora com 5 depoimentos)
+        setInterval(function() {
+            window.currentTestimonial = window.currentTestimonial === 5 ? 1 : window.currentTestimonial + 1;
+            window.showTestimonial(window.currentTestimonial);
+        }, 5000);
+
+        }
+
+        function startBasicFunctionality() {
+            // Basic functionality without jQuery
+            console.log('Running in fallback mode without jQuery');
+            
+            // Basic smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Basic mobile menu
+            const menuTrigger = document.querySelector('.menu-trigger');
+            const nav = document.querySelector('.nav');
+            if (menuTrigger && nav) {
+                menuTrigger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Initialize the application
+        initializeApp();
+    </script>
+</body>
+</html>
