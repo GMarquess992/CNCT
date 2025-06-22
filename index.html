@@ -797,6 +797,405 @@
             display: none !important;
         }
 
+        /* Diferenciais Section */
+        .diferencial-item {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .diferencial-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.12);
+            border-left-color: #EF6C00;
+        }
+
+        .diferencial-item.diferencial-full {
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 20px;
+        }
+
+        .diferencial-item.diferencial-full .diferencial-icon {
+            margin-bottom: 15px;
+            margin-right: 0;
+        }
+
+        .diferencial-item.diferencial-center {
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .diferencial-item.diferencial-center .diferencial-icon {
+            margin-bottom: 15px;
+            margin-right: 0;
+        }
+
+        .diferencial-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .diferencial-icon i {
+            font-size: 22px;
+            color: white;
+        }
+
+        .diferencial-item:hover .diferencial-icon {
+            background: linear-gradient(135deg, #EF6C00 0%, #FF9800 100%);
+            transform: scale(1.05);
+        }
+
+        .diferencial-content h5 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .diferencial-content p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* MB Assessoria Banner */
+        .mb-assessoria-banner {
+            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mb-assessoria-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            background: rgba(239, 108, 0, 0.1);
+            border-radius: 50%;
+        }
+
+        .mb-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .mb-logo {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 20px auto;
+            display: block;
+            filter: brightness(1.2);
+        }
+
+        .mb-content h4 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .mb-content h4 em {
+            color: #FF9800;
+            font-style: normal;
+        }
+
+        .mb-content > p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mb-features {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mb-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .mb-benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .mb-benefit-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mb-benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(239, 108, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px auto;
+            transition: all 0.3s ease;
+        }
+
+        .mb-benefit-card:hover .mb-benefit-icon {
+            background: #FF9800;
+            transform: scale(1.1);
+        }
+
+        .mb-benefit-icon i {
+            color: #FF9800;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .mb-benefit-card:hover .mb-benefit-icon i {
+            color: white;
+        }
+
+        .mb-benefit-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .mb-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .mb-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mb-list li i {
+            color: #FF9800;
+            margin-right: 12px;
+            font-size: 14px;
+            width: 18px;
+        }
+
+        .mb-tagline {
+            font-size: 18px;
+            font-weight: 600;
+            color: #FF9800;
+            margin: 25px 0 30px 0;
+            font-style: italic;
+        }
+
+        .mb-button a {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .mb-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(239, 108, 0, 0.4);
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 25px rgba(21, 101, 192, 0.15);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .faq-question:hover {
+            background: rgba(21, 101, 192, 0.05);
+        }
+
+        .faq-question.active {
+            background: rgba(21, 101, 192, 0.08);
+            border-bottom-color: rgba(21, 101, 192, 0.1);
+        }
+
+        .faq-question h5 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin: 0;
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .faq-icon {
+            font-size: 16px;
+            color: #1565C0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(45deg);
+            color: #EF6C00;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(248, 249, 250, 0.5);
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 0 30px 25px 30px;
+        }
+
+        .faq-answer p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin: 20px 0 0 0;
+        }
+
+        /* CTA Flutuante */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(100px);
+        }
+
+        .floating-cta.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .floating-cta a {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(239, 108, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-cta a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .floating-cta a:hover::before {
+            left: 100%;
+        }
+
+        .floating-cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(239, 108, 0, 0.4);
+            color: white;
+        }
+
+        .floating-cta a i {
+            font-size: 18px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         /* Clients Section - Layout atualizado */
         .the-clients {
             padding: 100px 0;
@@ -1135,7 +1534,7 @@
             font-size: 14px;
         }
 
-        /* Pricing Section - MANTENDO ORIGINAL */
+        /* Pricing Section - MANTENDO ORIGINAL COM NOVOS SUBTÍTULOS */
         .pricing-plans {
             padding: 100px 0;
         }
@@ -1223,8 +1622,22 @@
         .pricing-item h4 {
             font-size: 28px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             transition: all 0.3s ease;
+        }
+
+        /* NOVO: Subtítulo dos planos */
+        .pricing-item .plan-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .pricing-item.active .plan-subtitle {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* Hover no título do plano ativo */
@@ -1683,6 +2096,92 @@
             .service-item .icon {
                 margin: 0 auto 30px auto;
             }
+
+            /* Responsividade para novos elementos - tablet */
+            .diferencial-item {
+                padding: 22px 20px;
+                margin-bottom: 18px;
+            }
+
+            .diferencial-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 15px;
+            }
+
+            .diferencial-icon i {
+                font-size: 20px;
+            }
+
+            .diferencial-content h5 {
+                font-size: 15px;
+                margin-bottom: 7px;
+            }
+
+            .diferencial-content p {
+                font-size: 13px;
+            }
+
+            .mb-assessoria-banner {
+                padding: 35px 25px;
+            }
+
+            .mb-logo {
+                width: 110px;
+                margin-bottom: 18px;
+            }
+
+            .mb-content h4 {
+                font-size: 26px;
+                margin-bottom: 14px;
+            }
+
+            .mb-content > p {
+                font-size: 15px;
+                margin-bottom: 22px;
+            }
+
+            .mb-features {
+                margin: 22px 0;
+            }
+
+            .mb-benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                max-width: 400px;
+            }
+
+            .mb-benefit-card {
+                padding: 15px 12px;
+            }
+
+            .mb-benefit-icon {
+                width: 35px;
+                height: 35px;
+                margin-bottom: 10px;
+            }
+
+            .mb-benefit-icon i {
+                font-size: 16px;
+            }
+
+            .mb-benefit-text {
+                font-size: 13px;
+            }
+
+            .mb-list li {
+                font-size: 14px;
+                margin-bottom: 11px;
+            }
+
+            .mb-tagline {
+                font-size: 17px;
+                margin: 22px 0 28px 0;
+            }
+
+            .faq-question {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1808,6 +2307,109 @@
             .pricing-item.active:hover {
                 transform: translateY(-8px) !important;
                 box-shadow: 0 10px 25px rgba(21, 101, 192, 0.2) !important;
+            }
+
+            /* Responsividade para novos elementos */
+            .diferencial-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 18px 15px;
+                margin-bottom: 15px;
+            }
+
+            .diferencial-icon {
+                margin-right: 0;
+                margin-bottom: 12px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .diferencial-icon i {
+                font-size: 18px;
+            }
+
+            .diferencial-content h5 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .diferencial-content p {
+                font-size: 13px;
+            }
+
+            .mb-assessoria-banner {
+                padding: 30px 20px;
+            }
+
+            .mb-logo {
+                width: 100px;
+                margin-bottom: 15px;
+            }
+
+            .mb-content h4 {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+
+            .mb-content > p {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .mb-features {
+                margin: 20px 0;
+            }
+
+            .mb-list li {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .mb-tagline {
+                font-size: 16px;
+                margin: 20px 0 25px 0;
+            }
+
+            .mb-button a {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .faq-section {
+                padding: 50px 0;
+            }
+
+            .faq-question {
+                padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .faq-question h5 {
+                font-size: 16px;
+                margin-bottom: 10px;
+                padding-right: 0;
+            }
+
+            .faq-icon {
+                align-self: flex-end;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            .faq-answer.active {
+                padding: 0 20px 20px 20px;
+            }
+
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-cta a {
+                padding: 12px 20px;
+                font-size: 14px;
             }
         }
 
@@ -1953,6 +2555,128 @@
             .stat-text {
                 font-size: 10px;
                 letter-spacing: 0.2px;
+            }
+
+            /* Responsividade para novos elementos - mobile pequeno */
+            .diferencial-item {
+                padding: 15px 12px;
+                margin-bottom: 12px;
+            }
+
+            .diferencial-icon {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 10px;
+            }
+
+            .diferencial-icon i {
+                font-size: 16px;
+            }
+
+            .diferencial-content h5 {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .diferencial-content p {
+                font-size: 12px;
+            }
+
+            .mb-assessoria-banner {
+                padding: 25px 15px;
+            }
+
+            .mb-logo {
+                width: 90px;
+                margin-bottom: 12px;
+            }
+
+            .mb-content h4 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .mb-content > p {
+                font-size: 13px;
+                margin-bottom: 18px;
+            }
+
+            .mb-features {
+                margin: 18px 0;
+            }
+
+            .mb-benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                max-width: 350px;
+            }
+
+            .mb-benefit-card {
+                padding: 12px 10px;
+            }
+
+            .mb-benefit-icon {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 8px;
+            }
+
+            .mb-benefit-icon i {
+                font-size: 14px;
+            }
+
+            .mb-benefit-text {
+                font-size: 12px;
+            }
+
+            .mb-list li {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .mb-tagline {
+                font-size: 14px;
+                margin: 18px 0 22px 0;
+            }
+
+            .mb-button a {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .faq-question {
+                padding: 18px 15px;
+            }
+
+            .faq-question h5 {
+                font-size: 15px;
+            }
+
+            .faq-icon {
+                right: 15px;
+                top: 18px;
+            }
+
+            .faq-answer.active {
+                padding: 0 15px 18px 15px;
+            }
+
+            .faq-answer p {
+                font-size: 14px;
+            }
+
+            .floating-cta {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-cta a {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .floating-cta a i {
+                font-size: 16px;
             }
         }
 
@@ -2235,8 +2959,8 @@
             <div class="row align-items-center" style="height: 65%; margin-bottom: 20px;">
                 <div class="col-lg-6">
                     <div class="header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                        <h2>Contabilidade Digital Completa Para Sua Empresa</h2>
-                        <p>Transforme a gestão contábil da sua empresa com nossa plataforma digital. Relatórios em tempo real, suporte especializado e preços justos para empresas de todos os tamanhos.</p>
+                        <h2>Contabilidade Digital. Simples. Rápida. Conectada com o seu negócio.</h2>
+                        <p>Com 30 anos de experiência no mercado contábil, atendendo empresas de todos os setores, trazemos agora uma solução 100% digital, ágil e descomplicada para manter sua empresa em dia com o Fisco.</p>
                         
                         <!-- Estatísticas de Credibilidade -->
                         <div class="credibility-stats">
@@ -2252,7 +2976,7 @@
                                 <div class="col-lg-4">
                                     <div class="stat-item">
                                         <div>
-                                            <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                                            <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
                                         </div>
                                         <div class="stat-text">De Satisfação</div>
                                     </div>
@@ -2286,9 +3010,9 @@
                                     <div class="icon-compact">
                                         <i class="fas fa-calculator"></i>
                                     </div>
-                                    <h5>Gestão Contábil Completa</h5>
-                                    <p>Contabilidade automatizada com total precisão e agilidade.</p>
-                                    <a href="#contact" class="btn-proposta-compact" onclick="selectPlan('Gestão Contábil')">Solicitar Proposta</a>
+                                    <h5>Abertura de Empresa</h5>
+                                    <p>Abra sua empresa em até 10 dias úteis e tenha carência na sua mensalidade.</p>
+                                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Vim%20do%20site%20da%20Conecta%20Cont%C3%A1bil%20e%20quero%20come%C3%A7ar%20a%20cuidar%20da%20contabilidade%20da%20minha%20empresa.%20Podem%20me%20ajudar%3F" target="_blank" class="btn-proposta-compact">Quero Começar Agora</a>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -2296,9 +3020,9 @@
                                     <div class="icon-compact">
                                         <i class="fas fa-file-invoice-dollar"></i>
                                     </div>
-                                    <h5>Declaração de IR</h5>
-                                    <p>IR feito por especialistas para maximizar sua restituição.</p>
-                                    <a href="#contact" class="btn-proposta-compact" onclick="selectPlan('Declaração IR')">Solicitar Proposta</a>
+                                    <h5>Abra o seu MEI em menos de 24h</h5>
+                                    <p>Abra o seu MEI sem complicação e com quem entende.</p>
+                                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Preciso%20abrir%20minha%20empresa%20e%20vi%20que%20voc%C3%AAs%20fazem%20esse%20servi%C3%A7o.%20Podem%20me%20ajudar%3F" target="_blank" class="btn-proposta-compact">Fazer Abertura de Empresa</a>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -2306,9 +3030,9 @@
                                     <div class="icon-compact">
                                         <i class="fas fa-building"></i>
                                     </div>
-                                    <h5>Abertura de Empresas</h5>
-                                    <p>Abra sua empresa em até 10 dias úteis sem burocracia.</p>
-                                    <a href="#contact" class="btn-proposta-compact" onclick="selectPlan('Abertura de Empresa')">Solicitar Proposta</a>
+                                    <h5>Conheça nossos planos</h5>
+                                    <p>Planos personalizados para você e a sua empresa, de forma que caiba em seu bolso.</p>
+                                    <a href="#pricing" class="btn-proposta-compact">Conheça nossos planos</a>
                                 </div>
                             </div>
                         </div>
@@ -2330,9 +3054,9 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h4>Nossos <em>Serviços</em> de Contabilidade Digital</h4>
+                        <h4>O que a  <em>Conecta</em> faz por você?</h4>
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
-                        <p>Oferecemos soluções completas em contabilidade digital para empresas de todos os portes. Tecnologia, praticidade e suporte especializado.</p>
+                        <p>Cuidamos de tudo que sua empresa precisa para ficar regularizada, de forma simples, rápida e 100% online.</p>
                     </div>
                 </div>
             </div>
@@ -2342,8 +3066,8 @@
                 <div class="col-lg-3">
                     <div class="service-item first-service animate-on-scroll">
                         <div class="icon"></div>
-                        <h4>Gestão Contábil Completa</h4>
-                        <p>Contabilidade automatizada: balancetes e DREs sempre em dia, com total precisão e agilidade.</p>
+                        <h4>Abertura, alteração e encerramento de empresas</h4>
+                        <p>Formalizamos sua empresa, realizamos alterações contratuais e encerramos CNPJs, tudo de forma digital, rápida e segura.</p>
                         <div class="text-button">
                             <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
                         </div>
@@ -2352,8 +3076,8 @@
                 <div class="col-lg-3">
                     <div class="service-item second-service animate-on-scroll">
                         <div class="icon"></div>
-                        <h4>Declaração de IR</h4>
-                        <p>IR feito por especialistas. Maximize sua restituição e evite problemas com a Receita.</p>
+                        <h4>Apuração de impostos e obrigações mensais</h4>
+                        <p>Fazemos os cálculos, preparamos e enviamos os impostos da sua empresa, além das obrigações fiscais mensais.</p>
                         <div class="text-button">
                             <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
                         </div>
@@ -2362,8 +3086,8 @@
                 <div class="col-lg-3">
                     <div class="service-item third-service animate-on-scroll">
                         <div class="icon"></div>
-                        <h4>Abertura de Empresas</h4>
-                        <p>Abra sua empresa em até 10 dias. Cuidamos da burocracia para você focar no seu negócio.</p>
+                        <h4>Recalculo de guias atrasadas</h4>
+                        <p>Está com guias em atraso? Calculamos, atualizamos e organizamos seus débitos para você colocar tudo em dia.</p>
                         <div class="text-button">
                             <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
                         </div>
@@ -2372,8 +3096,8 @@
                 <div class="col-lg-3">
                     <div class="service-item fourth-service animate-on-scroll">
                         <div class="icon"></div>
-                        <h4>Consultoria Tributária</h4>
-                        <p>Planejamento tributário inteligente para reduzir custos e aumentar a eficiência fiscal da sua empresa.</p>
+                        <h4>Regularização fiscal e contábil</h4>
+                        <p>Organizamos sua empresa perante a Receita Federal, Prefeitura, Estado e demais órgãos, para que você foque no que mais importa: crescer.</p>
                         <div class="text-button">
                             <a href="#">Saiba Mais <i class="fa fa-arrow-right"></i></a>
                         </div>
@@ -2381,60 +3105,143 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ***** Services Section End ***** -->
 
-    <!-- ***** About Us Section Start ***** -->
-    <div id="about" class="about-us section">
-        <div class="container">
+        <!-- Diferenciais Section -->
+        <div class="container" style="margin-top: 80px;">
             <div class="row">
-                <div class="col-lg-6 align-self-center">
-                    <div class="section-heading">
+                <div class="col-lg-12">
+                    <div class="section-heading text-center">
                         <h4>Por que escolher a <em>Conecta Contábil</em>?</h4>
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
-                        <p>Somos especialistas em contabilidade digital, oferecendo soluções modernas e eficientes para empresas que buscam praticidade e segurança na gestão contábil.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="diferencial-item animate-on-scroll">
+                        <div class="diferencial-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="diferencial-content">
+                            <h5>Atendimento 100% online, rápido e prático</h5>
+                            <p>Resolva tudo pela internet, sem precisar sair de casa ou perder tempo em deslocamentos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="diferencial-item animate-on-scroll">
+                        <div class="diferencial-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="diferencial-content">
+                            <h5>Segurança e respaldo de um grupo com 30 anos de mercado</h5>
+                            <p>Confiança e experiência de três décadas cuidando da contabilidade de empresas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="diferencial-item animate-on-scroll">
+                        <div class="diferencial-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="diferencial-content">
+                            <h5>Preços acessíveis, sem surpresas</h5>
+                            <p>Transparência total nos valores. Você paga apenas pelo que contrata, sem taxas ocultas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="diferencial-item animate-on-scroll">
+                        <div class="diferencial-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="diferencial-content">
+                            <h5>Processos simples, desburocratizados e eficientes</h5>
+                            <p>Eliminamos a burocracia desnecessária para que você foque no que realmente importa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-3 offset-md-3">
+                    <div class="diferencial-item diferencial-center animate-on-scroll">
+                        <div class="diferencial-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="diferencial-content">
+                            <h5>Possibilidade de migrar para a MB quando sua empresa crescer</h5>
+                            <p>Comece conosco e, quando precisar de um atendimento mais consultivo e estratégico, migre facilmente para a MB Assessoria Contábil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ***** Services Section End ***** -->
+
+<!-- ***** About Us Section Start ***** -->
+<div id="about" class="about-us section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="section-heading">
+                        <h4>Quem está por trás da <em>Conecta Contábil</em>?</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>A Conecta Contábil nasceu para simplificar a vida de quem quer manter sua empresa em dia, sem complicação e sem burocracia.</p>
                     </div>
                     <div class="left-text">
                         <h4>Contabilidade Digital que <em>Transforma</em> seu Negócio</h4>
-                        <p>Nossa missão é simplificar a vida do empresário através da tecnologia. Oferecemos um serviço contábil completo, digital e humanizado, com o suporte de profissionais experientes e uma plataforma moderna.</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="box-item animate-on-scroll">
-                                    <h4><a href="#">Tecnologia Avançada</a></h4>
-                                    <p>Plataforma digital moderna com relatórios em tempo real e integração com principais sistemas.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="box-item animate-on-scroll">
-                                    <h4><a href="#">Suporte Especializado</a></h4>
-                                    <p>Equipe de contadores experientes sempre disponíveis para esclarecer suas dúvidas.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="box-item animate-on-scroll">
-                                    <h4><a href="#">Transparência Total</a></h4>
-                                    <p>Acesse relatórios e documentos a qualquer hora, com total transparência nos processos.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="box-item animate-on-scroll">
-                                    <h4><a href="#">Preços Justos</a></h4>
-                                    <p>Planos flexíveis e preços acessíveis para empresas de todos os tamanhos.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <p>Com mais de 5 anos no mercado e milhares de clientes satisfeitos, oferecemos a melhor experiência em contabilidade digital do Brasil.</p>
-                                <div class="gradient-button">
-                                    <a href="#pricing">Conheça Nossos Planos</a>
-                                </div>
-                                <span>*Primeira consultoria gratuita</span>
-                            </div>
-                        </div>
+                        <p>Somos uma empresa do <strong>Grupo MB</strong>, que há <strong>30 anos</strong> assessora empresas de todos os tamanhos e setores. Nossa missão é oferecer uma contabilidade 100% online, focada no essencial, com custo acessível e atendimento rápido.</p>
+                        
+                        <p>Aqui, você resolve sua contabilidade com segurança, sem precisar sair de casa. E quando sua empresa crescer, pode contar com a <strong>MB Assessoria Contábil</strong>, nossa estrutura premium, especializada em atendimento consultivo, estratégico e personalizado.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="servicos.png" alt="Serviços Conecta Contábil">
+                        <img src="servicos.png" alt="Serviços Conecta Contábil - Grupo MB">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MB Assessoria Section -->
+        <div class="row" style="margin-top: 80px;">
+            <div class="col-lg-12">
+                <div class="mb-assessoria-banner">
+                    <div class="mb-content">
+                        <img src="mb-logo.png" alt="MB Assessoria Contábil" class="mb-logo" onerror="this.style.display='none'">
+                        <h4>Sua empresa está crescendo? <em>Conte com a MB.</em></h4>
+                        <p>Se sua empresa está expandindo, precisando de uma contabilidade mais consultiva, estratégica e com atendimento próximo, conheça a MB Assessoria Contábil.</p>
+                        <div class="mb-features">
+                            <div class="mb-benefits-grid">
+                                <div class="mb-benefit-card">
+                                    <div class="mb-benefit-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <div class="mb-benefit-text">Gestão fiscal e contábil personalizada</div>
+                                </div>
+                                <div class="mb-benefit-card">
+                                    <div class="mb-benefit-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="mb-benefit-text">Folha de pagamento e departamento pessoal</div>
+                                </div>
+                                <div class="mb-benefit-card">
+                                    <div class="mb-benefit-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="mb-benefit-text">Análises tributárias, econômicas e financeiras</div>
+                                </div>
+                                <div class="mb-benefit-card">
+                                    <div class="mb-benefit-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="mb-benefit-text">Suporte para expansão, crescimento e organização empresarial</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-tagline">Se é hora de crescer, é hora da MB.</p>
+                        <div class="mb-button">
+                            <a href="https://wa.me/5511994080776?text=Oi%21%20Minha%20empresa%20est%C3%A1%20crescendo%20e%20preciso%20de%20uma%20contabilidade%20mais%20estrat%C3%A9gica.%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20MB%20Assessoria%20Cont%C3%A1bil." target="_blank">Conheça a MB Assessoria Contábil</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2669,9 +3476,9 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-heading">
-                        <h4>Escolha o <em>plano ideal</em> para sua empresa</h4>
+                        <h4>Planos <em>simples.</em> Sem surpresas.</h4>
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
-                        <p>Planos flexíveis e transparentes para empresas de todos os tamanhos. Sem taxas ocultas, sem surpresas.</p>
+                        <p>Aqui você só paga pelo que realmente precisa. Sem taxas escondidas. Sem pacotes complicados. Escolha o serviço ideal para sua empresa.</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -2679,17 +3486,17 @@
                         <div class="icon">
                             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="MEI - Pessoa trabalhando sozinha" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
                         </div>
-                        <h4>Plano MEI</h4>
+                        <h4>Plano Essencial</h4>
+                        <p class="plan-subtitle">Perfeito para quem quer manter a empresa regularizada mensalmente.</p>
                         <div class="price">R$ 49<span>/mês</span></div>
                         <ul>
-                            <li>Declaração Anual DASN-SIMEI</li>
-                            <li>Suporte via WhatsApp</li>
-                            <li>Consultoria básica</li>
-                            <li>Portal do cliente</li>
-                            <li>Relatórios mensais</li>
+                            <li>Cálculo e envio dos impostos mensais</li>
+                            <li>Envio das obrigações fiscais e contábeis</li>
+                            <li> Atendimento 100% online</li>
+                            <li>Suporte via WhatsApp e e-mail</li>
                         </ul>
                         <div class="border-button">
-                            <a href="#contact" onclick="selectPlan('MEI')">Escolher Plano</a>
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Essencial%20%28R%24%2049%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank">Contratar Agora</a>
                         </div>
                     </div>
                 </div>
@@ -2698,17 +3505,16 @@
                         <div class="icon">
                             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Empresarial" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
                         </div>
-                        <h4>Plano Empresarial</h4>
+                        <h4>Plano Regularização</h4>
+                        <p class="plan-subtitle">Para quem precisa organizar guias atrasadas e deixar a empresa em dia.</p>
                         <div class="price">R$ 199<span>/mês</span></div>
                         <ul>
-                            <li>Gestão Contábil Completa</li>
-                            <li>Apuração de Impostos</li>
-                            <li>Departamento Pessoal</li>
-                            <li>Suporte prioritário</li>
-                            <li>Relatórios avançados</li>
+                            <li>Tudo do Plano Essencial</li>
+                            <li> Recalculo e emissão de guias vencidas</li>
+                            <li>Análise da situação fiscal e orientação</li>
                         </ul>
                         <div class="border-button">
-                            <a href="#contact" onclick="selectPlan('Empresarial')">Escolher Plano</a>
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Preciso%20do%20Plano%20Regulariza%C3%A7%C3%A3o%20%28R%24%20199%2Fm%C3%AAs%29%20para%20organizar%20guias%20atrasadas%20da%20minha%20empresa.%20Podem%20me%20ajudar%3F" target="_blank">Falar com Especialista</a>
                         </div>
                     </div>
                 </div>
@@ -2717,17 +3523,16 @@
                         <div class="icon">
                             <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Premium" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
                         </div>
-                        <h4>Plano Premium</h4>
-                        <div class="price">R$ 399<span>/mês</span></div>
+                        <h4>Abertura, Alteração e Encerramento de Empresas</h4>
+                        <p class="plan-subtitle">Ideal para quem está começando ou precisa fazer mudanças na empresa.</p>
+                        <div class="price">Sob Consulta</div>
                         <ul>
-                            <li>Tudo do Plano Empresarial</li>
-                            <li>Contador Dedicado</li>
-                            <li>Consultoria Tributária Ilimitada</li>
-                            <li>Planejamento Estratégico</li>
-                            <li>Suporte 24h</li>
+                            <li>Abertura de empresa</li>
+                            <li>Alteração contratual</li>
+                            <li>Encerramento de empresa</li>
                         </ul>
                         <div class="border-button">
-                            <a href="#contact" onclick="selectPlan('Premium')">Escolher Plano</a>
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20nos%20servi%C3%A7os%20de%20Abertura%2C%20Altera%C3%A7%C3%A3o%20e%20Encerramento%20de%20Empresas.%20Podem%20me%20passar%20valores%20e%20informa%C3%A7%C3%B5es%3F" target="_blank">Quero Abrir Minha Empresa</a>
                         </div>
                     </div>
                 </div>
@@ -2735,6 +3540,67 @@
         </div>
     </div>
     <!-- ***** Pricing Plans Section End ***** -->
+
+    <!-- ***** FAQ Section Start ***** -->
+    <div id="faq" class="faq-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Ficou com <em>dúvidas</em>? A gente responde.</h4>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
+                        <p>Esclarecemos as principais dúvidas sobre nossos serviços de contabilidade online.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(1)">
+                                <h5>O serviço é realmente 100% online?</h5>
+                                <i class="fas fa-plus faq-icon" id="icon-1"></i>
+                            </div>
+                            <div class="faq-answer" id="answer-1">
+                                <p>Sim! Desde o contrato até a entrega dos documentos e guias, tudo é feito digitalmente, com total segurança e praticidade.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(2)">
+                                <h5>Vocês fazem consultoria tributária ou financeira?</h5>
+                                <i class="fas fa-plus faq-icon" id="icon-2"></i>
+                            </div>
+                            <div class="faq-answer" id="answer-2">
+                                <p>Não. A Conecta oferece serviços contábeis essenciais, como apuração de impostos, obrigações acessórias e legalização. Para consultoria e assessoria especializada, contamos com a MB Assessoria Contábil, nosso serviço premium.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(3)">
+                                <h5>E se eu precisar de atendimento presencial?</h5>
+                                <i class="fas fa-plus faq-icon" id="icon-3"></i>
+                            </div>
+                            <div class="faq-answer" id="answer-3">
+                                <p>Nosso modelo é digital. Mas, se sua empresa crescer e exigir acompanhamento consultivo, você pode migrar para a MB, onde oferecemos atendimento presencial e personalizado.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(4)">
+                                <h5>Posso migrar da Conecta para a MB a qualquer momento?</h5>
+                                <i class="fas fa-plus faq-icon" id="icon-4"></i>
+                            </div>
+                            <div class="faq-answer" id="answer-4">
+                                <p>Sim! Assim que sua empresa tiver uma estrutura que demande atendimento mais próximo, com análise estratégica, folha de pagamento, planejamento tributário e mais, você faz essa transição de forma simples.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** FAQ Section End ***** -->
 
     <!-- ***** Contact Section Start ***** -->
     <section id="contact" class="section">
@@ -2863,6 +3729,14 @@
         </div>
     </footer>
     <!-- ***** Newsletter Section End ***** -->
+
+    <!-- ***** CTA Flutuante ***** -->
+    <div class="floating-cta" id="floatingCTA">
+        <a href="https://wa.me/5511945642854?text=Oi%21%20Tenho%20interesse%20em%20um%20dos%20planos%20da%20Conecta.%20Gostaria%20de%20conversar%20sobre%20qual%20%C3%A9%20o%20ideal%20para%20minha%20empresa." target="_blank">
+            <i class="fas fa-rocket"></i>
+            Quero Começar Agora
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -3077,17 +3951,6 @@
             }
         };
 
-        window.selectPlan = function(planName) {
-            // Show contact form and pre-fill message
-            $('.contact-form').addClass('show');
-            $('textarea[name="message"]').val('Olá! Gostaria de contratar o ' + planName + '. Por favor, entrem em contato comigo.');
-            
-            // Scroll to contact form
-            $('html, body').animate({
-                scrollTop: $('#contact').offset().top - 100
-            }, 700);
-        };
-
         // Initialize AOS alternative
         $('.wow').each(function() {
             $(this).css('visibility', 'visible');
@@ -3144,6 +4007,51 @@
 
         // Initialize the application
         initializeApp();
+
+        // FAQ Functions
+        window.toggleFAQ = function(index) {
+            const answer = document.getElementById('answer-' + index);
+            const icon = document.getElementById('icon-' + index);
+            const question = icon.parentElement;
+
+            // Close all other FAQs
+            for (let i = 1; i <= 4; i++) {
+                if (i !== index) {
+                    const otherAnswer = document.getElementById('answer-' + i);
+                    const otherIcon = document.getElementById('icon-' + i);
+                    const otherQuestion = otherIcon.parentElement;
+                    
+                    otherAnswer.classList.remove('active');
+                    otherIcon.classList.remove('active');
+                    otherQuestion.classList.remove('active');
+                }
+            }
+
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+            question.classList.toggle('active');
+        };
+
+        // Floating CTA Control
+        function controlFloatingCTA() {
+            const floatingCTA = document.getElementById('floatingCTA');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Show CTA after scrolling 50% of viewport height
+            if (scrollPosition > windowHeight * 0.5) {
+                floatingCTA.classList.add('show');
+            } else {
+                floatingCTA.classList.remove('show');
+            }
+        }
+
+        // Add scroll listener for floating CTA
+        window.addEventListener('scroll', controlFloatingCTA);
+
+        // Initialize floating CTA
+        controlFloatingCTA();
 
         // Animação de contagem dos números das estatísticas
         function animateCounter(element) {
