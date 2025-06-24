@@ -1021,6 +1021,156 @@
             color: white;
         }
 
+        /* Clients Section - Novo Design Moderno */
+        .the-clients {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(21, 101, 192, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(21, 101, 192, 0.06);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1565C0, #EF6C00);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(21, 101, 192, 0.15);
+            border-color: rgba(21, 101, 192, 0.2);
+        }
+
+        .testimonial-card.animated:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(21, 101, 192, 0.1);
+        }
+
+        .client-photo {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .client-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .client-photo img {
+            border-color: #EF6C00;
+            transform: scale(1.05);
+        }
+
+        .client-info h5 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .client-position {
+            font-size: 14px;
+            color: #1565C0;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .client-company {
+            font-size: 13px;
+            color: #666;
+            font-weight: 400;
+            display: block;
+        }
+
+        .testimonial-content {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(21, 101, 192, 0.1);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .rating .fas.fa-star {
+            color: #FFB74D;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .rating .fas.fa-star {
+            color: #FF9800;
+            transform: scale(1.1);
+        }
+
+        .rating-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FF9800;
+            margin-left: 8px;
+        }
+
         /* FAQ Section */
         .faq-section {
             padding: 100px 0;
@@ -1123,14 +1273,14 @@
         }
 
         .floating-cta a {
-            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            background: linear-gradient(105deg, #128C7E 0%, #25D366 100%);
             color: white;
             padding: 15px 25px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             font-size: 16px;
-            box-shadow: 0 8px 25px rgba(239, 108, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -1157,7 +1307,7 @@
 
         .floating-cta a:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(239, 108, 0, 0.4);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
             color: white;
         }
 
@@ -1172,562 +1322,265 @@
             100% { transform: scale(1); }
         }
 
-        /* Clients Section - Layout atualizado */
-        .the-clients {
-            padding: 100px 0;
-            background: #f8f9fa;
-        }
-
-        .naccs {
-            position: relative;
-        }
-
-        /* Layout de depoimentos concentrado e organizado */
-        .testimonials-list {
-            background: transparent;
-            border-radius: 15px;
-            padding: 30px 25px;
-            box-shadow: none;
-            height: fit-content;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .testimonial-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 0;
-            border-bottom: 1px solid rgba(240, 240, 240, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .testimonial-item:last-child {
-            border-bottom: none;
-        }
-
-        .testimonial-item:hover {
-            background: rgba(21, 101, 192, 0.08);
-            border-radius: 10px;
-            margin: 0 -20px;
-            padding: 25px 20px;
-        }
-
-        .testimonial-item.active {
-            background: rgba(21, 101, 192, 0.12);
-            border-radius: 10px;
-            margin: 0 -20px;
-            padding: 25px 20px;
-            border-bottom: 1px solid transparent;
-        }
-
-        .testimonial-info {
-            flex: 1;
-            min-width: 140px;
-        }
-
-        .testimonial-info h4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2C3E50;
-            margin-bottom: 5px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .testimonial-info .date {
-            font-size: 13px;
-            color: #aaa;
-            font-weight: 400;
-        }
-
-        .testimonial-item .category {
-            flex: 1;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            font-weight: 500;
-            background: rgba(245, 246, 250, 0.8);
-            padding: 8px 18px;
-            border-radius: 20px;
-            margin: 0 20px;
-            min-width: 100px;
-        }
-
-        .testimonial-item .rating {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            min-width: 100px;
-            justify-content: flex-end;
-        }
-
-        .testimonial-item .rating .fa-star {
-            color: #FF9800;
-            font-size: 14px;
-        }
-
-        .testimonial-item .rating .rating-number {
-            font-size: 16px;
-            font-weight: 600;
-            color: #FF9800;
-            margin-left: 8px;
-        }
-
-        /* Ajustes no layout do grid */
-        .naccs .grid .row {
-            align-items: flex-start;
-        }
-
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .testimonials-list {
-                margin-bottom: 30px;
-            }
-            
-            .testimonial-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-                padding: 20px 0;
-            }
-            
-            .testimonial-item .category {
-                margin: 5px 0 0 0;
-                text-align: left;
-                align-self: flex-start;
-            }
-            
-            .testimonial-item .rating {
-                margin-top: 5px;
-                justify-content: flex-start;
-                min-width: auto;
-            }
-
-            /* Remove margem forçada em mobile */
-            .the-clients .naccs .grid .row {
-                position: static;
-                min-height: auto;
-                align-items: flex-start;
-            }
-
-            .the-clients .naccs .grid .row .col-lg-6:first-child {
-                display: block;
-            }
-
-            .the-clients .naccs .grid .row .col-lg-6:last-child {
-                margin-top: 30px;
-                padding-left: 15px;
-            }
-
-            .naccs .grid .row {
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .testimonial-item .category {
-                display: none;
-            }
-            
-            .testimonials-list {
-                padding: 20px 15px;
-            }
-        }
-
-        .nacc {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nacc li {
-            display: none;
-        }
-
-        .nacc li.active {
-            display: block;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .client-content {
-            background: white;
-            /* Múltiplas opções de caminho para a imagem PNG */
-            background-image: url('Fundodpmt.png'), url('./Fundodpmt.png'), url('../Fundodpmt.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        /* Overlay de fallback */
-        .client-content .overlay-bg {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(21, 101, 192, 0.6) 100%);
-            border-radius: 15px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Aspas modernas e estilizadas */
-        .client-content::before {
-            content: '"';
-            position: absolute;
-            top: 80px;
-            left: 15px;
-            font-size: 90px;
-            color: rgba(255, 255, 255, 0.35);
-            font-family: 'Roboto', sans-serif;
-            font-weight: 900;
-            line-height: 0.7;
-            z-index: 3;
-        }
-
-        /* Aspas de fechamento */
-        .client-content::after {
-            content: '"';
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            font-size: 90px;
-            color: rgba(255, 255, 255, 0.35);
-            font-family: 'Roboto', sans-serif;
-            font-weight: 900;
-            line-height: 0.7;
-            z-index: 3;
-        }
-
-        .client-content p {
-            font-size: 17px;
-            line-height: 1.65;
-            color: white;
-            margin-top: 55px;
-            margin-bottom: 40px;
-            font-style: normal;
-            padding: 0 25px;
-            position: relative;
-            z-index: 4;
-            font-weight: 400;
-            font-family: 'Roboto', sans-serif;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-            letter-spacing: 0.5px;
-            text-align: left;
-        }
-
-        .down-content {
-            display: flex;
-            align-items: center;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        /* Cliente Icon Style - Ícones das profissões */
-        .client-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 24px;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
-        }
-
-        .client-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.5);
-        }
-
-        .client-icon.e-commerce {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-        }
-
-        .client-icon.e-commerce:hover {
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
-        }
-
-        .client-icon.consultoria {
-            background: linear-gradient(135deg, #6f42c1 0%, #8e44ad 100%);
-            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
-        }
-
-        .client-icon.consultoria:hover {
-            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.5);
-        }
-
-        .client-icon.mei {
-            background: linear-gradient(135deg, #EF6C00 0%, #FF9800 100%);
-            box-shadow: 0 4px 15px rgba(239, 108, 0, 0.3);
-        }
-
-        .client-icon.mei:hover {
-            box-shadow: 0 8px 25px rgba(239, 108, 0, 0.5);
-        }
-
-        .client-icon.restaurante {
-            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-        }
-
-        .client-icon.restaurante:hover {
-            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5);
-        }
-
-        .client-icon.saude {
-            background: linear-gradient(135deg, #17a2b8 0%, #3498db 100%);
-            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
-        }
-
-        .client-icon.saude:hover {
-            box-shadow: 0 8px 25px rgba(23, 162, 184, 0.5);
-        }
-
-        .right-content h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #2C3E50;
-        }
-
-        .right-content span {
-            color: #999;
-            font-size: 14px;
-        }
-
-        /* Pricing Section - MANTENDO ORIGINAL COM NOVOS SUBTÍTULOS */
+        /* Pricing Section - Novo Design Moderno */
         .pricing-plans {
             padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
-        .pricing-item {
-            background: white;
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
+        .modern-pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
-            border: 2px solid transparent;
         }
 
-        /* Força transições em todos os elementos */
-        .pricing-item * {
-            transition: all 0.3s ease;
-        }
-
-        /* Regra específica com máxima prioridade para plano ativo */
-        body .pricing-plans .pricing-item.active:hover {
-            transform: scale(1.08) !important;
-            border-color: #FF9800 !important;
-            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.3) !important;
-            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%) !important;
-        }
-
-        body .pricing-plans .pricing-item.active:hover .price {
-            color: #FF9800 !important;
-            transform: scale(1.05) !important;
-        }
-
-        body .pricing-plans .pricing-item.active:hover h4 {
-            transform: scale(1.02) !important;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        .pricing-item::before {
+        .modern-pricing-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #1565C0, #2C3E50);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .pricing-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .pricing-item:hover {
-            transform: translateY(-10px);
-            border-color: #1565C0;
-        }
-
-        /* Hover específico para plano ativo */
-        .pricing-item.active:hover {
-            transform: scale(1.08);
-            border-color: #FF9800;
-            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.3);
-        }
-
-        .pricing-item.active {
-            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%);
-            color: white;
-            transform: scale(1.05);
-            border-color: #EF6C00;
-        }
-
-        .pricing-item.active::before {
-            background: #EF6C00;
-            transform: scaleX(1);
-        }
-
-        .pricing-item.active .icon i {
-            color: white;
-        }
-
-        .pricing-item h4 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
             transition: all 0.3s ease;
         }
 
-        /* NOVO: Subtítulo dos planos */
-        .pricing-item .plan-subtitle {
-            font-size: 14px;
-            font-weight: 400;
-            color: #888;
-            margin-bottom: 20px;
-            line-height: 1.4;
-            font-style: italic;
+        .modern-pricing-card.bronze::before {
+            background: linear-gradient(90deg, #CD7F32, #D2691E);
         }
 
-        .pricing-item.active .plan-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+        .modern-pricing-card.silver::before {
+            background: linear-gradient(90deg, #C0C0C0, #E5E4E2);
         }
 
-        /* Hover no título do plano ativo */
-        .pricing-item.active:hover h4 {
-            transform: scale(1.02);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        .modern-pricing-card.gold::before {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
         }
 
-        .pricing-item .price {
+        .modern-pricing-card.platinum::before {
+            background: linear-gradient(90deg, #E5E4E2, #F7F7F7);
+        }
+
+        .modern-pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .modern-pricing-card.featured {
+            transform: scale(1.05);
+            border-color: #FFD700;
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .modern-pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .pricing-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .currency {
+            font-size: 18px;
+            color: #666;
+            margin-right: 2px;
+        }
+
+        .amount {
             font-size: 48px;
             font-weight: 700;
-            color: #EF6C00;
+            color: #2C3E50;
+        }
+
+        .period {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .plan-description {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .pricing-features {
             margin-bottom: 30px;
-            transition: all 0.3s ease;
         }
 
-        .pricing-item .price span {
-            font-size: 18px;
-            font-weight: 400;
+        .feature {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #555;
         }
 
-        .pricing-item.active .price {
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .feature-icon.included {
+            background: #28a745;
             color: white;
         }
 
-        /* Hover no preço do plano ativo */
-        .pricing-item.active:hover .price {
-            color: #FF9800;
-            transform: scale(1.05);
+        .feature-icon.excluded {
+            background: #dc3545;
+            color: white;
+            border: 1px solid #dc3545;
         }
 
-        /* Regras de hover mais específicas para garantir funcionamento */
-        .pricing-plans .pricing-item.active:hover {
-            transform: scale(1.08) !important;
-            border-color: #FF9800 !important;
-            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.3) !important;
-            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%) !important;
+        .pricing-footer {
+            text-align: center;
         }
 
-        .pricing-plans .pricing-item:hover {
-            transform: translateY(-10px) !important;
-            border-color: #1565C0 !important;
-        }
-
-        .pricing-item .icon {
-            margin-bottom: 30px;
-        }
-
-        .pricing-item .icon i {
-            font-size: 60px;
-            color: #1565C0;
+        .plan-btn {
+            background: linear-gradient(135deg, #1565C0, #2C3E50);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
         }
 
-        .pricing-item:hover .icon i {
-            transform: scale(1.1);
+        .plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+            color: white;
         }
 
-        .pricing-item ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 40px;
+        .plan-btn.featured {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #2C3E50;
         }
 
-        .pricing-item ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 16px;
+        .plan-btn.featured:hover {
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            color: #2C3E50;
+        }
+
+        /* Diamond Card - Design Refinado */
+        .modern-pricing-card.diamond-card {
+            background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            border: 2px solid #ddd;
+            color: white;
             position: relative;
         }
 
-        .pricing-item ul li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: #1565C0;
-            margin-right: 10px;
+        .modern-pricing-card.diamond-card::before {
+            background: linear-gradient(90deg, #2d3436, #636e72);
         }
 
-        .pricing-item.active ul li {
-            border-bottom-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .pricing-item.active ul li::before {
-            color: #EF6C00;
-        }
-
-        .border-button a {
-            border: 2px solid #1565C0;
-            color: #1565C0;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .border-button a:hover {
-            background: #1565C0;
+        .premium-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #2d3436, #636e72);
             color: white;
-            transform: translateY(-2px);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(45, 52, 54, 0.4);
         }
 
-        .pricing-item.active .border-button a {
+        .modern-pricing-card.diamond-card .pricing-header h3 {
+            color: white;
+        }
+
+        .modern-pricing-card.diamond-card .currency,
+        .modern-pricing-card.diamond-card .amount {
+            color: white;
+        }
+
+        .modern-pricing-card.diamond-card .plan-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .modern-pricing-card.diamond-card .feature {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .plan-btn.diamond {
+            background: linear-gradient(135deg, #636e72, #2d3436);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .plan-btn.diamond:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d3436;
             border-color: white;
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        .pricing-item.active .border-button a:hover {
-            background: white;
-            color: #1565C0;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        .modern-pricing-card.diamond-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(45, 52, 54, 0.3);
+            border-color: #636e72;
         }
 
         /* Newsletter Section */
@@ -2056,14 +1909,6 @@
                 font-size: 28px;
             }
 
-            .naccs .grid .row {
-                flex-direction: column;
-            }
-
-            .testimonials-list {
-                margin-bottom: 30px;
-            }
-
             .service-item {
                 text-align: center;
                 margin-bottom: 30px;
@@ -2158,6 +2003,26 @@
             .faq-question {
                 padding: 25px;
             }
+
+            /* Responsividade testimonials */
+            .testimonial-card {
+                margin-bottom: 30px;
+            }
+            
+            .testimonial-header {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .client-photo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .client-info {
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2227,27 +2092,12 @@
                 text-align: center;
             }
 
-            .pricing-item .icon img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .client-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
             .section-heading h4 {
                 font-size: 24px;
             }
 
-            .service-item,
-            .pricing-item {
-                margin-bottom: 30px;
-            }
-
             .service-item {
+                margin-bottom: 30px;
                 text-align: center;
                 padding: 30px 20px;
             }
@@ -2272,17 +2122,30 @@
                 padding: 50px 0;
             }
 
-            .pricing-item.active {
+            .modern-pricing-card.featured {
                 transform: none;
             }
 
-            .pricing-item:hover {
+            .modern-pricing-card:hover {
                 transform: translateY(-5px);
             }
             
-            .pricing-item.active:hover {
+            .modern-pricing-card.featured:hover {
                 transform: translateY(-8px) !important;
-                box-shadow: 0 10px 25px rgba(21, 101, 192, 0.2) !important;
+                box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2) !important;
+            }
+
+            .diamond-features {
+                gap: 15px;
+            }
+
+            .diamond-features span {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .modern-pricing-card.diamond-card {
+                margin-bottom: 30px;
             }
 
             /* Responsividade para novos elementos */
@@ -2387,6 +2250,21 @@
                 padding: 12px 20px;
                 font-size: 14px;
             }
+
+            /* Responsividade testimonials mobile */
+            .testimonial-card {
+                padding: 25px 20px;
+                margin-bottom: 25px;
+            }
+            
+            .client-photo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .testimonial-content p {
+                font-size: 15px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -2468,40 +2346,28 @@
                 font-size: 13px;
             }
 
-            .pricing-item {
-                padding: 30px 20px;
+            .modern-pricing-card {
+                margin-bottom: 25px;
+                padding: 25px 20px;
             }
 
-            /* Mantém hover em mobile para plano ativo */
-            .pricing-item:hover {
-                transform: translateY(-3px) !important;
-            }
-            
-            .pricing-item.active:hover {
-                transform: translateY(-5px) scale(1.02) !important;
-                box-shadow: 0 8px 20px rgba(21, 101, 192, 0.2) !important;
-                border-color: #FF9800 !important;
-            }
-
-            .pricing-item .price {
+            .amount {
                 font-size: 36px;
             }
 
-            .client-content {
-                padding: 30px 20px;
+            /* Mantém hover em mobile para plano ativo */
+            .modern-pricing-card:hover {
+                transform: translateY(-3px) !important;
+            }
+            
+            .modern-pricing-card.featured:hover {
+                transform: translateY(-5px) scale(1.02) !important;
+                box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2) !important;
             }
 
-            .testimonials-list {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-
-            .testimonial-item {
-                padding: 15px 0;
-            }
-
-            .testimonial-item .category {
-                display: none;
+            .modern-pricing-card.diamond-card {
+                padding: 25px 20px;
+                margin-bottom: 25px;
             }
 
             .col-lg-3 {
@@ -2653,6 +2519,23 @@
 
             .floating-cta a i {
                 font-size: 16px;
+            }
+
+            /* Responsividade testimonials mobile pequeno */
+            .the-clients {
+                padding: 60px 0;
+            }
+            
+            .testimonial-card {
+                padding: 20px 15px;
+            }
+            
+            .client-info h5 {
+                font-size: 16px;
+            }
+            
+            .testimonial-content p {
+                font-size: 14px;
             }
         }
 
@@ -2814,33 +2697,6 @@
             display: block;
         }
 
-        /* REGRAS DE DEBUG - MÁXIMA ESPECIFICIDADE PARA PLANO ATIVO */
-        html body .pricing-plans .container .row .col-lg-4 .pricing-item.active:hover {
-            transform: scale(1.08) !important;
-            border: 2px solid #FF9800 !important;
-            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.4) !important;
-            background: linear-gradient(135deg, #1565C0 0%, #2C3E50 100%) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        html body .pricing-plans .container .row .col-lg-4 .pricing-item.active:hover .price {
-            color: #FFB74D !important;
-            transform: scale(1.05) !important;
-        }
-
-        html body .pricing-plans .container .row .col-lg-4 .pricing-item.active:hover h4 {
-            color: white !important;
-            transform: scale(1.02) !important;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        html body .pricing-plans .container .row .col-lg-4 .pricing-item.active:hover .border-button a {
-            background: white !important;
-            color: #1565C0 !important;
-            transform: translateY(-3px) !important;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3) !important;
-        }
-
         /* Additional utility classes */
         .text-center { text-align: center; }
         .text-left { text-align: left; }
@@ -2996,8 +2852,8 @@
                                     <div class="icon-compact">
                                         <i class="fas fa-file-invoice-dollar"></i>
                                     </div>
-                                    <h5>Abra o seu MEI em menos de 24h</h5>
-                                    <p>Abra o seu MEI sem complicação e com quem entende.</p>
+                                    <h5>Sua empresa precisa deixar de ser MEI?</h5>
+                                    <p>Especialistas analisam seu MEI e orientam grátis sobre desenquadramento ou baixa.</p>
                                     <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Preciso%20abrir%20minha%20empresa%20e%20vi%20que%20voc%C3%AAs%20fazem%20esse%20servi%C3%A7o.%20Podem%20me%20ajudar%3F" target="_blank" class="btn-proposta-compact">Fazer Abertura de Empresa</a>
                                 </div>
                             </div>
@@ -3006,9 +2862,9 @@
                                     <div class="icon-compact">
                                         <i class="fas fa-building"></i>
                                     </div>
-                                    <h5>Conheça nossos planos</h5>
-                                    <p>Planos personalizados para você e a sua empresa, de forma que caiba em seu bolso.</p>
-                                    <a href="#pricing" class="btn-proposta-compact">Conheça nossos planos</a>
+                                    <h5>Troque de Contabilidade</h5>
+                                    <p>Descubra o plano ideal, personalizado e acessível para você e sua empresa.</p>
+                                    <a href="#pricing" class="btn-proposta-compact">Troque de Contabilidade</a>
                                 </div>
                             </div>
                         </div>
@@ -3232,207 +3088,88 @@
                         <p>Empresários que escolheram a Conecta Contábil e transformaram a gestão contábil de seus negócios.</p>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="naccs">
-                        <div class="grid">
-                            <div class="row">
-                                <div class="col-lg-6 align-self-center">
-                                    <div class="testimonials-list">
-                                        <div class="testimonial-item active" onclick="showTestimonial(1)">
-                                            <div class="testimonial-info">
-                                                <h4>Ana Silva</h4>
-                                                <span class="date">Janeiro 2024</span>
-                                            </div>
-                                            <div class="category">E-commerce</div>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span class="rating-number">5.0</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="testimonial-item" onclick="showTestimonial(2)">
-                                            <div class="testimonial-info">
-                                                <h4>Carlos Mendes</h4>
-                                                <span class="date">Dezembro 2023</span>
-                                            </div>
-                                            <div class="category">Consultoria</div>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span class="rating-number">4.8</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="testimonial-item" onclick="showTestimonial(3)">
-                                            <div class="testimonial-info">
-                                                <h4>Juliana Santos</h4>
-                                                <span class="date">Fevereiro 2024</span>
-                                            </div>
-                                            <div class="category">MEI</div>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span class="rating-number">5.0</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="testimonial-item" onclick="showTestimonial(4)">
-                                            <div class="testimonial-info">
-                                                <h4>Roberto Costa</h4>
-                                                <span class="date">Março 2024</span>
-                                            </div>
-                                            <div class="category">Restaurante</div>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span class="rating-number">4.9</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="testimonial-item" onclick="showTestimonial(5)">
-                                            <div class="testimonial-info">
-                                                <h4>Dra. Marina</h4>
-                                                <span class="date">Abril 2024</span>
-                                            </div>
-                                            <div class="category">Clínica</div>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span class="rating-number">5.0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <ul class="nacc">
-                                        <li class="active">
-                                            <div>
-                                                <div class="thumb">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="client-content">
-                                                                <p>A Conecta Contábil revolucionou a gestão contábil da minha loja online. Agora tenho mais tempo para focar nas vendas e crescimento do negócio. O suporte é excepcional!</p>
-                                                            </div>
-                                                            <div class="down-content">
-                                                                <div class="client-icon e-commerce">
-                                                                    <i class="fas fa-shopping-cart"></i>
-                                                                </div>
-                                                                <div class="right-content">
-                                                                    <h4>Ana Silva</h4>
-                                                                    <span>Proprietária, Loja Bella</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <div class="thumb">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="client-content">
-                                                                <p>Migrei toda minha contabilidade para a Conecta Contábil e não me arrependo. A plataforma é intuitiva, os relatórios são claros e o atendimento é sempre muito profissional.</p>
-                                                            </div>
-                                                            <div class="down-content">
-                                                                <div class="client-icon consultoria">
-                                                                    <i class="fas fa-briefcase"></i>
-                                                                </div>
-                                                                <div class="right-content">
-                                                                    <h4>Carlos Mendes</h4>
-                                                                    <span>Diretor, CM Consultoria</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <div class="thumb">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="client-content">
-                                                                <p>Como MEI, sempre tive dificuldades com a parte contábil. A Conecta Contábil simplificou tudo! Agora fico tranquila sabendo que está tudo organizado e em dia.</p>
-                                                            </div>
-                                                            <div class="down-content">
-                                                                <div class="client-icon mei">
-                                                                    <i class="fas fa-user"></i>
-                                                                </div>
-                                                                <div class="right-content">
-                                                                    <h4>Juliana Santos</h4>
-                                                                    <span>MEI, Juliana Beauty</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <div class="thumb">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="client-content">
-                                                                <p>Desde que começei a usar os serviços da Conecta, minha gestão contábil ficou muito mais organizada. O controle de custos do restaurante melhorou significativamente!</p>
-                                                            </div>
-                                                            <div class="down-content">
-                                                                <div class="client-icon restaurante">
-                                                                    <i class="fas fa-utensils"></i>
-                                                                </div>
-                                                                <div class="right-content">
-                                                                    <h4>Roberto Costa</h4>
-                                                                    <span>Proprietário, Sabor & Arte</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <div class="thumb">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="client-content">
-                                                                <p>Excelente trabalho! A contabilidade da minha clínica está sempre atualizada. Posso focar totalmente nos meus pacientes sem me preocupar com questões fiscais.</p>
-                                                            </div>
-                                                            <div class="down-content">
-                                                                <div class="client-icon saude">
-                                                                    <i class="fas fa-stethoscope"></i>
-                                                                </div>
-                                                                <div class="right-content">
-                                                                    <h4>Dra. Marina Oliveira</h4>
-                                                                    <span>Dentista, Clínica Sorrir</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-header">
+                            <div class="client-photo">
+                                <img src="Gabriel.jpeg" alt="Gabriel Zanini" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="client-info">
+                                <h5>Gabriel Zanini</h5>
+                                <span class="client-position">Advogado</span>
+                                <span class="client-company">Zanini Advogados e Associados</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Contabilidade nota 1000, você nunca vai esquecer de pagar os impostos, o sistema não deixa!"</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-header">
+                            <div class="client-photo">
+                                <img src="Thais.jpeg" alt="Thais Graziela" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="client-info">
+                                <h5>Thais Graziela</h5>
+                                <span class="client-position">Proprietária</span>
+                                <span class="client-company">E-commerce</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Ótima contabilidade com excelentes profissionais. Trabalhamos há mais de 15 anos juntos e estão sempre dispostos a nos atender bem e sanar todas as nossas dúvidas."</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-header">
+                            <div class="client-photo">
+                                <img src="Rafael.jpeg" alt="Rafael Furlan" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="client-info">
+                                <h5>Rafael Furlan</h5>
+                                <span class="client-position">Proprietário</span>
+                                <span class="client-company">Torres IT</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Acredito que o maior benefício da minha parceria com a Conecta foi poder focar no meu Negócio, eles possuem empatia e cuidado no trato com a minha empresa."</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">5.0</span>
                             </div>
                         </div>
                     </div>
@@ -3448,63 +3185,295 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-heading">
-                        <h4>Planos <em>simples.</em> Sem surpresas.</h4>
+                        <h4>Planos <em>Comércio.</em> Completos e Profissionais.</h4>
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCAxMDAgNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMkg1MCAySDEwMCAyIiBzdHJva2U9IiNFRjZDMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K" alt="">
-                        <p>Aqui você só paga pelo que realmente precisa. Sem taxas escondidas. Sem pacotes complicados. Escolha o serviço ideal para sua empresa.</p>
+                        <p>Escolha o plano ideal para o seu comércio. Contabilidade completa, atendimento especializado e tecnologia de ponta.</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="pricing-item animate-on-scroll">
-                        <div class="icon">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="MEI - Pessoa trabalhando sozinha" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+            </div>
+
+            <!-- Planos Principais -->
+            <div class="row justify-content-center mb-5">
+                <!-- Bronze -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="modern-pricing-card bronze">
+                        <div class="pricing-header">
+                            <div class="plan-icon">🥉</div>
+                            <h3>Bronze</h3>
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">119</span>
+                                <span class="period">,90/mês</span>
+                            </div>
+                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
                         </div>
-                        <h4>Plano Essencial</h4>
-                        <p class="plan-subtitle">Perfeito para quem quer manter a empresa regularizada mensalmente.</p>
-                        <div class="price">R$ 49<span>/mês</span></div>
-                        <ul>
-                            <li>Cálculo e envio dos impostos mensais</li>
-                            <li>Envio das obrigações fiscais e contábeis</li>
-                            <li> Atendimento 100% online</li>
-                            <li>Suporte via WhatsApp e e-mail</li>
-                        </ul>
-                        <div class="border-button">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Essencial%20%28R%24%2049%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank">Contratar Agora</a>
+                        <div class="pricing-features">
+                            <!-- Itens Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Contabilidade completa</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Chat e e-mail 8h às 17h</span>
+                            </div>
+                            <!-- Itens Não Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Processo de abertura grátis</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Certificado digital gratuito</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>WhatsApp 8h às 19h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Telefone 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Assessor dedicado</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Reunião de orientação</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Emissor de notas fiscais</span>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Bronze%20%28R%24%20119%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Bronze</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="pricing-item active animate-on-scroll">
-                        <div class="icon">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Empresarial" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+
+                <!-- Prata -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="modern-pricing-card silver">
+                        <div class="pricing-header">
+                            <div class="plan-icon">🥈</div>
+                            <h3>Prata</h3>
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">199</span>
+                                <span class="period">,90/mês</span>
+                            </div>
+                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
                         </div>
-                        <h4>Plano Regularização</h4>
-                        <p class="plan-subtitle">Para quem precisa organizar guias atrasadas e deixar a empresa em dia.</p>
-                        <div class="price">R$ 199<span>/mês</span></div>
-                        <ul>
-                            <li>Tudo do Plano Essencial</li>
-                            <li> Recalculo e emissão de guias vencidas</li>
-                            <li>Análise da situação fiscal e orientação</li>
-                        </ul>
-                        <div class="border-button">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Preciso%20do%20Plano%20Regulariza%C3%A7%C3%A3o%20%28R%24%20199%2Fm%C3%AAs%29%20para%20organizar%20guias%20atrasadas%20da%20minha%20empresa.%20Podem%20me%20ajudar%3F" target="_blank">Falar com Especialista</a>
+                        <div class="pricing-features">
+                            <!-- Itens Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Contabilidade completa</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Certificado digital gratuito</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Chat e e-mail 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>WhatsApp 8h às 19h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Emissor ilimitado + 1 sócio</span>
+                            </div>
+                            <!-- Itens Não Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Processo de abertura grátis</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Telefone 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Assessor dedicado</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Reunião de orientação</span>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Prata%20%28R%24%20199%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Prata</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="pricing-item animate-on-scroll">
-                        <div class="icon">
-                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Premium" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+
+                <!-- Ouro - Destacado -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="modern-pricing-card gold featured">
+                        <div class="popular-badge">Mais Popular</div>
+                        <div class="pricing-header">
+                            <div class="plan-icon">🥇</div>
+                            <h3>Ouro</h3>
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">279</span>
+                                <span class="period">,90/mês</span>
+                            </div>
+                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
                         </div>
-                        <h4>Abertura, Alteração e Encerramento de Empresas</h4>
-                        <p class="plan-subtitle">Ideal para quem está começando ou precisa fazer mudanças na empresa.</p>
-                        <div class="price">Sob Consulta</div>
-                        <ul>
-                            <li>Abertura de empresa</li>
-                            <li>Alteração contratual</li>
-                            <li>Encerramento de empresa</li>
-                        </ul>
-                        <div class="border-button">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20nos%20servi%C3%A7os%20de%20Abertura%2C%20Altera%C3%A7%C3%A3o%20e%20Encerramento%20de%20Empresas.%20Podem%20me%20passar%20valores%20e%20informa%C3%A7%C3%B5es%3F" target="_blank">Quero Abrir Minha Empresa</a>
+                        <div class="pricing-features">
+                            <!-- Itens Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Contabilidade completa</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Processo de abertura grátis</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Certificado digital gratuito</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Chat e e-mail 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>WhatsApp 8h às 19h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Telefone 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Ilimitado + até 2 sócios</span>
+                            </div>
+                            <!-- Itens Não Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Assessor dedicado</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon excluded">✗</span>
+                                <span>Reunião de orientação</span>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Ouro%20%28R%24%20279%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn featured">Contratar Ouro</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platinum -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="modern-pricing-card platinum">
+                        <div class="pricing-header">
+                            <div class="plan-icon">💎</div>
+                            <h3>Platinum</h3>
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">379</span>
+                                <span class="period">,90/mês</span>
+                            </div>
+                            <p class="plan-description">Ideal até R$ 200.000 por mês</p>
+                        </div>
+                        <div class="pricing-features">
+                            <!-- Itens Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Contabilidade completa</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Processo de abertura grátis</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Certificado digital gratuito</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Chat e e-mail 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>WhatsApp 8h às 19h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Telefone 8h às 17h</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Assessor dedicado</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Reunião de orientação</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Ilimitado + até 3 sócios + 4 funcionários</span>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Platinum%20%28R%24%20379%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Platinum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diamond - Plano Especial -->
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="modern-pricing-card diamond-card">
+                        <div class="premium-badge">Premium</div>
+                        <div class="pricing-header">
+                            <div class="plan-icon">💠</div>
+                            <h3>Diamond</h3>
+                            <div class="price">
+                                <span class="currency">Sob</span>
+                                <span class="amount">Consulta</span>
+                            </div>
+                            <p class="plan-description">Para empresas que precisam de atendimento consultivo e estratégico</p>
+                        </div>
+                        <div class="pricing-features">
+                            <!-- Itens Incluídos -->
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Assessor dedicado exclusivo</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Análises estratégicas personalizadas</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Planejamento tributário avançado</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Gestão financeira especializada</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Consultoria para crescimento empresarial</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon included">✓</span>
+                                <span>Atendimento presencial quando necessário</span>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://www.contabilidademb.com.br/" target="_blank" class="plan-btn diamond">Conheça a MB Assessoria Contábil</a>
                         </div>
                     </div>
                 </div>
@@ -3685,7 +3654,6 @@
                         <ul>
                             <li><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei" target="_blank">Portal do MEI</a></li>
                             <li><a href="https://www.gov.br/receitafederal/pt-br" target="_blank">Receita Federal</a></li>
-                            <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/declaracoes-e-demonstrativos/sped-contabil" target="_blank">SPED Contábil</a></li>
                             <li><a href="https://www.gov.br/esocial/pt-br" target="_blank">eSocial</a></li>
                             <li><a href="https://www8.receita.fazenda.gov.br/simplesnacional/" target="_blank">Simples Nacional</a></li>
                         </ul>
@@ -3713,7 +3681,7 @@
     <!-- ***** CTA Flutuante ***** -->
     <div class="floating-cta" id="floatingCTA">
         <a href="https://wa.me/5511945642854?text=Oi%21%20Tenho%20interesse%20em%20um%20dos%20planos%20da%20Conecta.%20Gostaria%20de%20conversar%20sobre%20qual%20%C3%A9%20o%20ideal%20para%20minha%20empresa." target="_blank">
-            <i class="fas fa-rocket"></i>
+            <i class="fab fa-whatsapp"></i>
             Quero Começar Agora
         </a>
     </div>
@@ -3781,9 +3749,6 @@
 
         function startMainApplication() {
             "use strict";
-
-            // Global variables
-            window.currentTestimonial = 1;
 
             // Additional preloader removal with jQuery
             $(window).on('load', function() {
@@ -3908,43 +3873,10 @@
                 });
             });
 
-        // Global functions para depoimentos com novo layout
-        window.showTestimonial = function(index) {
-            // Remove active class from all testimonial items and testimonials
-            $('.testimonial-item').removeClass('active');
-            $('.nacc li').removeClass('active');
-            
-            // Add active class to selected testimonial item and testimonial
-            $('.testimonial-item').eq(index - 1).addClass('active');
-            $('.nacc li').eq(index - 1).addClass('active');
-        };
-
-        window.toggleContactForm = function() {
-            var form = $('.contact-form');
-            if (form.hasClass('show')) {
-                form.removeClass('show');
-            } else {
-                form.addClass('show');
-                $('html, body').animate({
-                    scrollTop: $('#contact').offset().top - 100
-                }, 700);
-            }
-        };
-
-        // Initialize AOS alternative
-        $('.wow').each(function() {
-            $(this).css('visibility', 'visible');
-        });
-
-        // Initialize testimonials and start auto-rotation
-        window.showTestimonial(1);
-
-        // Testimonial auto-rotation (agora com 5 depoimentos)
-        setInterval(function() {
-            window.currentTestimonial = window.currentTestimonial === 5 ? 1 : window.currentTestimonial + 1;
-            window.showTestimonial(window.currentTestimonial);
-        }, 5000);
-
+            // Initialize AOS alternative
+            $('.wow').each(function() {
+                $(this).css('visibility', 'visible');
+            });
         }
 
         function startBasicFunctionality() {
@@ -3995,7 +3927,7 @@
             const question = icon.parentElement;
 
             // Close all other FAQs
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 if (i !== index) {
                     const otherAnswer = document.getElementById('answer-' + i);
                     const otherIcon = document.getElementById('icon-' + i);
@@ -4073,6 +4005,45 @@
         const credibilityStats = document.querySelector('.credibility-stats');
         if (credibilityStats) {
             statsObserver.observe(credibilityStats);
+        }
+
+        // Auto-animar cards dos depoimentos quando a seção aparecer na tela
+        function animateTestimonialCards() {
+            const cards = document.querySelectorAll('.testimonial-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animated');
+                }, index * 150); // 150ms de delay entre cada card
+            });
+        }
+
+        // Executar quando a página carregar
+        setTimeout(animateTestimonialCards, 1000);
+
+        // Ou executar com Intersection Observer para animar quando aparecer na tela
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = entry.target.querySelectorAll('.testimonial-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animated');
+                        }, index * 150);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar a seção de clientes
+        const clientsSection = document.querySelector('.the-clients');
+        if (clientsSection) {
+            observer.observe(clientsSection);
         }
     </script>
 </body>
