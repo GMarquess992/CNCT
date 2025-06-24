@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no">
     <meta name="description" content="Contabilidade digital completa para sua empresa. Gestão contábil, fiscal e tributária com tecnologia e praticidade.">
     <meta name="author" content="Conecta Contábil">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,7 +85,7 @@
             line-height: 1.6;
         }
 
-        /* Header Styles - ORIGINAL COM CORES AJUSTADAS */
+        /* Header Styles - MELHORADO PARA MOBILE */
         .header-area {
             background-color: rgba(250, 250, 250, 0.95);
             backdrop-filter: blur(10px);
@@ -93,21 +93,26 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 9999; /* Aumentado para garantir que fique acima */
             padding: 15px 0;
             transition: all 0.3s ease;
+            width: 100%;
+            min-height: 70px; /* Altura mínima garantida */
         }
 
         .header-area.sticky {
             background-color: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             padding: 10px 0;
+            min-height: 60px;
         }
 
         .main-nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 100%;
+            position: relative;
         }
 
         .logo img {
@@ -228,7 +233,7 @@
             box-shadow: 0 5px 15px rgba(21, 101, 192, 0.3);
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu - MELHORADO */
         .menu-trigger {
             display: none;
             background: none;
@@ -238,7 +243,8 @@
             position: relative;
             width: 30px;
             height: 25px;
-            z-index: 1002;
+            z-index: 10001; /* Maior que o header */
+            flex-shrink: 0; /* Não permite comprimir */
         }
 
         .menu-trigger span {
@@ -265,7 +271,7 @@
             top: 22px;
         }
 
-        /* Animação para X - SIMPLIFICADA */
+        /* Animação para X */
         .menu-trigger.active span:nth-child(1) {
             top: 11px;
             transform: rotate(135deg);
@@ -281,7 +287,7 @@
             transform: rotate(-135deg);
         }
 
-        /* Main Banner - FUNDO LIMPO E BRANCO */
+        /* Main Banner */
         .main-banner {
             position: relative;
             background: #ffffff;
@@ -343,7 +349,7 @@
             display: inline-block;
         }
 
-        /* Esconder no mobile e tablet - REGRA MAIS ESPECÍFICA */
+        /* Esconder no mobile e tablet */
         @media screen and (max-width: 992px) {
             .main-nav .main-orange-button.desktop-only,
             .main-nav .desktop-only,
@@ -1021,7 +1027,7 @@
             color: white;
         }
 
-        /* Clients Section - Novo Design Moderno */
+        /* Clients Section */
         .the-clients {
             padding: 100px 0;
             background: #f8f9fa;
@@ -1322,269 +1328,437 @@
             100% { transform: scale(1); }
         }
 
-        /* Pricing Section - Novo Design Moderno */
+        /* Pricing Section - MELHORADO PARA DESKTOP E MOBILE */
         .pricing-plans {
             padding: 100px 0;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
-        .modern-pricing-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-            height: 100%;
-            border: 2px solid transparent;
-            position: relative;
+        /* DESKTOP PRICING TABLE */
+        .pricing-table-desktop {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             overflow: hidden;
+            border: 1px solid #e9ecef;
         }
 
-        .modern-pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            transition: all 0.3s ease;
+        .pricing-header {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            padding: 0;
+            margin: 0;
         }
 
-        .modern-pricing-card.bronze::before {
-            background: linear-gradient(90deg, #CD7F32, #D2691E);
+        .pricing-header .row {
+            margin: 0;
         }
 
-        .modern-pricing-card.silver::before {
-            background: linear-gradient(90deg, #C0C0C0, #E5E4E2);
+        .plan-header {
+            padding: 35px 15px 25px 15px;
+            text-align: center;
+            border-right: 1px solid #e9ecef;
+            position: relative;
+            background: #f8f9fa;
         }
 
-        .modern-pricing-card.gold::before {
-            background: linear-gradient(90deg, #FFD700, #FFA500);
+        .plan-header:last-child {
+            border-right: none;
         }
 
-        .modern-pricing-card.platinum::before {
-            background: linear-gradient(90deg, #E5E4E2, #F7F7F7);
-        }
-
-        .modern-pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .modern-pricing-card.featured {
-            transform: scale(1.05);
-            border-color: #FFD700;
-            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
-        }
-
-        .modern-pricing-card.featured:hover {
-            transform: translateY(-10px) scale(1.07);
+        .plan-header.gold {
+            background: #e3f2fd;
+            padding-top: 40px;
         }
 
         .popular-badge {
             position: absolute;
-            top: -10px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFD700, #FFA500);
+            background: #2196F3;
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            letter-spacing: 0.3px;
+            z-index: 10;
         }
 
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .plan-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .pricing-header h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2C3E50;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .currency {
+        .plan-name {
             font-size: 18px;
-            color: #666;
-            margin-right: 2px;
-        }
-
-        .amount {
-            font-size: 48px;
-            font-weight: 700;
+            font-weight: 600;
+            margin-bottom: 8px;
             color: #2C3E50;
         }
 
-        .period {
-            font-size: 16px;
+        .plan-price {
+            margin-bottom: 8px;
+        }
+
+        .price-amount {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+            color: #2C3E50;
+        }
+
+        .price-currency {
+            font-size: 14px;
+            margin-right: 2px;
+            color: #666;
+        }
+
+        .price-period {
+            font-size: 12px;
             color: #666;
         }
 
         .plan-description {
-            font-size: 14px;
+            font-size: 11px;
             color: #888;
-            font-style: italic;
-            margin: 0;
+            margin-bottom: 0;
         }
 
-        .pricing-features {
+        /* Features Table */
+        .features-table {
+            background: white;
+        }
+
+        .feature-row {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+        }
+
+        .feature-row:hover {
+            background: rgba(33, 150, 243, 0.03);
+        }
+
+        .feature-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            padding: 18px 20px;
+            font-weight: 500;
+            color: #2C3E50;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+
+        .feature-check {
+            padding: 18px;
+            text-align: center;
+            border-right: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .feature-check:last-child {
+            border-right: none;
+        }
+
+        .feature-check.gold {
+            background: #e3f2fd;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .check-icon.included {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .check-icon.excluded {
+            background: #f44336;
+            color: white;
+        }
+
+        /* Category Headers */
+        .category-header {
+            background: #f1f3f4;
+        }
+
+        .category-header .feature-name {
+            background: #f1f3f4;
+            color: #5f6368;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+        }
+
+        .category-header .feature-check {
+            background: #f1f3f4;
+            border-right-color: #e0e0e0;
+        }
+
+        .category-header .feature-check.gold {
+            background: #f1f3f4;
+        }
+
+        /* Buttons Section */
+        .buttons-section {
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 25px 0;
+        }
+
+        .plan-btn {
+            background: #00BCD4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .plan-btn:hover {
+            background: #00ACC1;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+        }
+
+        /* BOTÃO OURO COM COR LARANJA - PRINCIPAL ALTERAÇÃO */
+        .plan-btn.featured {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-btn.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .plan-btn.featured:hover::before {
+            left: 100%;
+        }
+
+        .plan-btn.featured:hover {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(239, 108, 0, 0.4);
+            color: white;
+        }
+
+        /* MOBILE PRICING CARDS */
+        .pricing-cards-mobile {
+            display: none;
+        }
+
+        .mobile-plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .mobile-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-plan-card.featured {
+            border-color: #2196F3;
+            transform: scale(1.02);
+        }
+
+        .mobile-plan-card.featured:hover {
+            transform: scale(1.02) translateY(-5px);
+        }
+
+        .mobile-popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2196F3;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-plan-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .mobile-plan-price {
+            margin-bottom: 10px;
+        }
+
+        .mobile-price-currency {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .mobile-price-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2C3E50;
+        }
+
+        .mobile-price-period {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .mobile-plan-description {
+            font-size: 14px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .mobile-features-list {
             margin-bottom: 30px;
         }
 
-        .feature {
-            display: flex;
-            align-items: center;
-            padding: 8px 0;
-            font-size: 14px;
-            color: #555;
+        .mobile-feature-category {
+            margin-bottom: 20px;
         }
 
-        .feature-icon {
+        .mobile-category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #EF6C00;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .mobile-feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+
+        .mobile-feature-icon {
             width: 20px;
             height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
             font-size: 12px;
+            font-weight: bold;
+            margin-right: 12px;
             flex-shrink: 0;
         }
 
-        .feature-icon.included {
-            background: #28a745;
+        .mobile-feature-icon.included {
+            background: #4CAF50;
             color: white;
         }
 
-        .feature-icon.excluded {
-            background: #dc3545;
+        .mobile-feature-icon.excluded {
+            background: #f44336;
             color: white;
-            border: 1px solid #dc3545;
         }
 
-        .pricing-footer {
-            text-align: center;
+        .mobile-feature-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
         }
 
-        .plan-btn {
-            background: linear-gradient(135deg, #1565C0, #2C3E50);
-            color: white;
-            padding: 15px 30px;
+        .mobile-plan-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
             border-radius: 25px;
-            text-decoration: none;
+            font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
+            text-decoration: none;
             display: inline-block;
-            width: 100%;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            background: #00BCD4;
+            color: white;
         }
 
-        .plan-btn:hover {
+        .mobile-plan-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
             color: white;
         }
 
-        .plan-btn.featured {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #2C3E50;
-        }
-
-        .plan-btn.featured:hover {
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-            color: #2C3E50;
-        }
-
-        /* Diamond Card - Design Refinado */
-        .modern-pricing-card.diamond-card {
-            background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.95) 100%);
-            backdrop-filter: blur(15px);
-            border: 2px solid #ddd;
-            color: white;
+        /* BOTÃO MOBILE OURO COM COR LARANJA */
+        .mobile-plan-btn.featured {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
             position: relative;
+            overflow: hidden;
         }
 
-        .modern-pricing-card.diamond-card::before {
-            background: linear-gradient(90deg, #2d3436, #636e72);
-        }
-
-        .premium-badge {
+        .mobile-plan-btn.featured::before {
+            content: '';
             position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #2d3436, #636e72);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mobile-plan-btn.featured:hover::before {
+            left: 100%;
+        }
+
+        .mobile-plan-btn.featured:hover {
+            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
+            box-shadow: 0 5px 15px rgba(239, 108, 0, 0.4);
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(45, 52, 54, 0.4);
-        }
-
-        .modern-pricing-card.diamond-card .pricing-header h3 {
-            color: white;
-        }
-
-        .modern-pricing-card.diamond-card .currency,
-        .modern-pricing-card.diamond-card .amount {
-            color: white;
-        }
-
-        .modern-pricing-card.diamond-card .plan-description {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .modern-pricing-card.diamond-card .feature {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .plan-btn.diamond {
-            background: linear-gradient(135deg, #636e72, #2d3436);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .plan-btn.diamond:hover {
-            background: rgba(255, 255, 255, 0.9);
-            color: #2d3436;
-            border-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-        }
-
-        .modern-pricing-card.diamond-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(45, 52, 54, 0.3);
-            border-color: #636e72;
         }
 
         /* Newsletter Section */
-        #newsletter {
+        #newsletter, #contact, .newsletter-section {
             background: linear-gradient(135deg, #2C3E50 0%, #1a1a1a 100%);
             padding: 100px 0;
             color: white;
@@ -1592,7 +1766,7 @@
             overflow: hidden;
         }
 
-        #newsletter::before {
+        #newsletter::before, #contact::before, .newsletter-section::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -1603,21 +1777,21 @@
             border-radius: 50%;
         }
 
-        #newsletter .section-heading h4 {
+        #newsletter .section-heading h4, #contact .section-heading h4, .newsletter-section .section-heading h4 {
             color: white;
         }
 
-        #newsletter .section-heading p {
+        #newsletter .section-heading p, #contact .section-heading p, .newsletter-section .section-heading p {
             color: rgba(255, 255, 255, 0.8);
         }
 
-        #newsletter form {
+        #newsletter form, #contact form, .newsletter-section form {
             margin-bottom: 60px;
             position: relative;
             z-index: 10;
         }
 
-        #newsletter .email {
+        #newsletter .email, #contact .email, .newsletter-section .email {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
@@ -1628,17 +1802,17 @@
             transition: all 0.3s ease;
         }
 
-        #newsletter .email:focus {
+        #newsletter .email:focus, #contact .email:focus, .newsletter-section .email:focus {
             outline: none;
             border-color: #EF6C00;
             background: rgba(255, 255, 255, 0.15);
         }
 
-        #newsletter .email::placeholder {
+        #newsletter .email::placeholder, #contact .email::placeholder, .newsletter-section .email::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
 
-        #newsletter .main-button {
+        #newsletter .main-button, #contact .main-button, .newsletter-section .main-button {
             background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
             border: none;
             border-radius: 25px;
@@ -1651,7 +1825,7 @@
             cursor: pointer;
         }
 
-        #newsletter .main-button:hover {
+        #newsletter .main-button:hover, #contact .main-button:hover, .newsletter-section .main-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(239, 108, 0, 0.4);
         }
@@ -1719,6 +1893,79 @@
             margin-bottom: 20px;
         }
 
+        /* Social Links in Footer */
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link i {
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 2;
+            position: relative;
+        }
+
+        .social-link.whatsapp {
+            background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+            box-shadow: 0 4px 15px rgba(131, 58, 180, 0.3);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            animation: socialPulse 0.6s ease;
+        }
+
+        .social-link.whatsapp:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .social-link.instagram:hover {
+            box-shadow: 0 8px 25px rgba(131, 58, 180, 0.5);
+        }
+
+        @keyframes socialPulse {
+            0% { transform: translateY(-3px) scale(1); }
+            50% { transform: translateY(-3px) scale(1.1); }
+            100% { transform: translateY(-3px) scale(1); }
+        }
+
         .copyright-text {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 40px;
@@ -1731,72 +1978,29 @@
             margin: 0;
         }
 
-        /* Contact Modal */
-        .contact-modal {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
 
-        .contact-form {
-            display: none;
-            animation: slideDown 0.5s ease;
-        }
 
-        .contact-form.show {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 16px;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .btn_red {
-            background: linear-gradient(105deg, #EF6C00 0%, #FF9800 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn_red:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(239, 108, 0, 0.4);
-        }
-
-        /* Responsive Design */
+        /* Responsive Design - MELHORADO */
         @media (max-width: 992px) {
             /* ESCONDER BOTÃO ÁREA DO CLIENTE NO MOBILE */
             .main-orange-button {
                 display: none !important;
             }
 
+            /* MOSTRAR CARDS MOBILE E ESCONDER TABELA DESKTOP */
+            .pricing-table-desktop {
+                display: none;
+            }
+
+            .pricing-cards-mobile {
+                display: block;
+            }
+
+            /* MOBILE MENU MELHORADO */
             .nav {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed; /* Mudado para fixed */
+                top: 70px; /* Altura do header */
                 left: 0;
                 right: 0;
                 background: white;
@@ -1804,6 +2008,9 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 border-radius: 0 0 15px 15px;
                 padding: 20px;
+                z-index: 9998; /* Menor que o header mas alto */
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
             }
 
             .nav.active {
@@ -1843,10 +2050,44 @@
                 display: block;
             }
 
+            /* HEADER MOBILE MELHORADO */
+            .header-area {
+                padding: 12px 0;
+                min-height: 60px;
+                position: fixed;
+                width: 100%;
+                z-index: 9999;
+            }
+
+            .header-area.sticky {
+                padding: 8px 0;
+                min-height: 55px;
+            }
+
+            .main-nav {
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .logo {
+                flex-shrink: 0;
+            }
+
+            .logo img {
+                max-height: 40px;
+            }
+
+            .header-area.sticky .logo img {
+                max-height: 35px;
+            }
+
+            /* BANNER MOBILE MELHORADO */
             .main-banner {
                 height: auto;
                 min-height: 100vh;
-                padding-top: 140px; /* Aumentado para dar mais espaço */
+                padding-top: 80px; /* Espaço para header fixo */
                 padding-bottom: 40px;
             }
 
@@ -1862,12 +2103,12 @@
             .header-text {
                 text-align: center;
                 margin-bottom: 40px;
-                margin-top: 20px; /* Espaço adicional do topo */
+                margin-top: 20px;
             }
 
             .header-text h2 {
                 font-size: 28px !important;
-                margin-top: 15px; /* Espaço adicional do título */
+                margin-top: 15px;
             }
 
             .buttons {
@@ -2038,26 +2279,50 @@
                 left: -9999px !important;
             }
 
+            /* HEADER MOBILE AINDA MAIS OTIMIZADO */
+            .header-area {
+                padding: 10px 0;
+                min-height: 55px;
+            }
+
+            .header-area.sticky {
+                padding: 8px 0;
+                min-height: 50px;
+            }
+
+            .logo img {
+                max-height: 35px;
+            }
+
+            .header-area.sticky .logo img {
+                max-height: 30px;
+            }
+
+            .menu-trigger {
+                width: 25px;
+                height: 20px;
+            }
+
             .main-banner {
-                padding-top: 120px; /* Aumentado para dar mais espaço no mobile */
+                padding-top: 70px; 
                 padding-bottom: 20px;
                 min-height: 100vh;
             }
 
             .header-text {
-                margin-top: 30px; /* Espaço adicional no mobile */
+                margin-top: 30px;
             }
 
             .header-text h2 {
                 font-size: 24px !important;
                 margin-bottom: 12px !important;
-                margin-top: 20px !important; /* Mais espaço do título */
+                margin-top: 20px !important;
             }
 
             .header-text p {
                 font-size: 14px !important;
                 margin-bottom: 20px !important;
-                margin-top: 10px !important; /* Espaço adicional do subtítulo */
+                margin-top: 10px !important;
             }
 
             .right-image img {
@@ -2118,34 +2383,23 @@
             .about-us,
             .the-clients,
             .pricing-plans,
-            #newsletter {
+            .faq-section,
+            #contact {
                 padding: 50px 0;
             }
 
-            .modern-pricing-card.featured {
-                transform: none;
+            /* MOBILE CARDS OTIMIZADOS PARA TABLET */
+            .mobile-plan-card {
+                padding: 25px 20px;
+                margin-bottom: 25px;
             }
 
-            .modern-pricing-card:hover {
-                transform: translateY(-5px);
-            }
-            
-            .modern-pricing-card.featured:hover {
-                transform: translateY(-8px) !important;
-                box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2) !important;
+            .mobile-plan-name {
+                font-size: 22px;
             }
 
-            .diamond-features {
-                gap: 15px;
-            }
-
-            .diamond-features span {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-
-            .modern-pricing-card.diamond-card {
-                margin-bottom: 30px;
+            .mobile-price-amount {
+                font-size: 32px;
             }
 
             /* Responsividade para novos elementos */
@@ -2268,8 +2522,32 @@
         }
 
         @media (max-width: 576px) {
+            /* HEADER SUPER COMPACTO */
+            .header-area {
+                padding: 8px 0;
+                min-height: 50px;
+            }
+
+            .header-area.sticky {
+                padding: 6px 0;
+                min-height: 45px;
+            }
+
+            .logo img {
+                max-height: 30px;
+            }
+
+            .header-area.sticky .logo img {
+                max-height: 28px;
+            }
+
+            .menu-trigger {
+                width: 22px;
+                height: 18px;
+            }
+
             .main-banner {
-                padding-top: 70px;
+                padding-top: 60px;
                 min-height: 100vh;
             }
 
@@ -2346,28 +2624,31 @@
                 font-size: 13px;
             }
 
-            .modern-pricing-card {
-                margin-bottom: 25px;
-                padding: 25px 20px;
+            /* MOBILE CARDS PARA TELAS PEQUENAS */
+            .mobile-plan-card {
+                padding: 20px 15px;
+                margin-bottom: 20px;
             }
 
-            .amount {
-                font-size: 36px;
+            .mobile-plan-name {
+                font-size: 20px;
             }
 
-            /* Mantém hover em mobile para plano ativo */
-            .modern-pricing-card:hover {
-                transform: translateY(-3px) !important;
-            }
-            
-            .modern-pricing-card.featured:hover {
-                transform: translateY(-5px) scale(1.02) !important;
-                box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2) !important;
+            .mobile-price-amount {
+                font-size: 28px;
             }
 
-            .modern-pricing-card.diamond-card {
-                padding: 25px 20px;
-                margin-bottom: 25px;
+            .mobile-category-title {
+                font-size: 14px;
+            }
+
+            .mobile-feature-text {
+                font-size: 13px;
+            }
+
+            .mobile-plan-btn {
+                padding: 12px;
+                font-size: 14px;
             }
 
             .col-lg-3 {
@@ -2537,6 +2818,22 @@
             .testimonial-content p {
                 font-size: 14px;
             }
+
+            /* Social Links Mobile */
+            .social-links {
+                margin-top: 15px;
+                gap: 12px;
+                justify-content: flex-start;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-link i {
+                font-size: 18px;
+            }
         }
 
         /* Animation Classes */
@@ -2681,7 +2978,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Success message */
+        /* Success message - only for newsletter */
         .success-message {
             background: linear-gradient(105deg, #28a745 0%, #20c997 100%);
             color: white;
@@ -2766,6 +3063,7 @@
                             <li><a href="#clients">Clientes</a></li>
                             <li><a href="#pricing">Planos</a></li>
                             <li><a href="#contact">Contato</a></li>
+
                             <li class="mobile-client-area"><a href="https://onvio.com.br/clientcenter/pt/auth?r=%2Fhome" target="_blank">Área do Cliente</a></li>
                         </ul>
                         <button class='menu-trigger'>
@@ -3192,290 +3490,559 @@
                 </div>
             </div>
 
-            <!-- Planos Principais -->
-            <div class="row justify-content-center mb-5">
-                <!-- Bronze -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="modern-pricing-card bronze">
+            <!-- DESKTOP - Pricing Comparison Table -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="pricing-table-desktop">
+                        <!-- Header with Plans -->
                         <div class="pricing-header">
-                            <div class="plan-icon">🥉</div>
-                            <h3>Bronze</h3>
-                            <div class="price">
-                                <span class="currency">R$</span>
-                                <span class="amount">119</span>
-                                <span class="period">,90/mês</span>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="plan-header" style="background: transparent; border: none;">
+                                        <!-- Empty space for features column -->
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="plan-header">
+                                                <div class="plan-name">Bronze</div>
+                                                <div class="plan-price">
+                                                    <span class="price-currency">R$</span>
+                                                    <span class="price-amount">119</span>
+                                                    <span class="price-period">,90/mês</span>
+                                                </div>
+                                                <div class="plan-description">Ideal até R$ 100.000 por mês</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="plan-header">
+                                                <div class="plan-name">Prata</div>
+                                                <div class="plan-price">
+                                                    <span class="price-currency">R$</span>
+                                                    <span class="price-amount">199</span>
+                                                    <span class="price-period">,90/mês</span>
+                                                </div>
+                                                <div class="plan-description">Ideal até R$ 100.000 por mês</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="plan-header gold">
+                                                <div class="popular-badge">Mais Popular</div>
+                                                <div class="plan-name">Ouro</div>
+                                                <div class="plan-price">
+                                                    <span class="price-currency">R$</span>
+                                                    <span class="price-amount">279</span>
+                                                    <span class="price-period">,90/mês</span>
+                                                </div>
+                                                <div class="plan-description">Ideal até R$ 100.000 por mês</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="plan-header">
+                                                <div class="plan-name">Platinum</div>
+                                                <div class="plan-price">
+                                                    <span class="price-currency">R$</span>
+                                                    <span class="price-amount">379</span>
+                                                    <span class="price-period">,90/mês</span>
+                                                </div>
+                                                <div class="plan-description">Ideal até R$ 200.000 por mês</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
                         </div>
-                        <div class="pricing-features">
-                            <!-- Itens Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Contabilidade completa</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Chat e e-mail 8h às 17h</span>
-                            </div>
-                            <!-- Itens Não Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Processo de abertura grátis</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Certificado digital gratuito</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>WhatsApp 8h às 19h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Telefone 8h às 17h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Assessor dedicado</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Reunião de orientação</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Emissor de notas fiscais</span>
-                            </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Bronze%20%28R%24%20119%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Bronze</a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Prata -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="modern-pricing-card silver">
-                        <div class="pricing-header">
-                            <div class="plan-icon">🥈</div>
-                            <h3>Prata</h3>
-                            <div class="price">
-                                <span class="currency">R$</span>
-                                <span class="amount">199</span>
-                                <span class="period">,90/mês</span>
-                            </div>
-                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
-                        </div>
-                        <div class="pricing-features">
-                            <!-- Itens Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Contabilidade completa</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Certificado digital gratuito</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Chat e e-mail 8h às 17h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>WhatsApp 8h às 19h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Emissor ilimitado + 1 sócio</span>
-                            </div>
-                            <!-- Itens Não Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Processo de abertura grátis</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Telefone 8h às 17h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Assessor dedicado</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Reunião de orientação</span>
+                        <!-- Buttons Section -->
+                        <div class="buttons-section">
+                            <div class="row">
+                                <div class="col-3">
+                                    <!-- Empty space for features column -->
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Bronze%20%28R%24%20119%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar</a>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Prata%20%28R%24%20199%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar</a>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Ouro%20%28R%24%20279%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn featured">Contratar</a>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Platinum%20%28R%24%20379%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="pricing-footer">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Prata%20%28R%24%20199%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Prata</a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Ouro - Destacado -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="modern-pricing-card gold featured">
-                        <div class="popular-badge">Mais Popular</div>
-                        <div class="pricing-header">
-                            <div class="plan-icon">🥇</div>
-                            <h3>Ouro</h3>
-                            <div class="price">
-                                <span class="currency">R$</span>
-                                <span class="amount">279</span>
-                                <span class="period">,90/mês</span>
+                        <!-- Features Table -->
+                        <div class="features-table">
+                            <!-- Category: Contabilidade -->
+                            <div class="row feature-row category-header">
+                                <div class="col-3">
+                                    <div class="feature-name">Contabilidade</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check gold"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="plan-description">Ideal até R$ 100.000 por mês</p>
-                        </div>
-                        <div class="pricing-features">
-                            <!-- Itens Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Contabilidade completa</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Processo de abertura grátis</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Certificado digital gratuito</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Chat e e-mail 8h às 17h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>WhatsApp 8h às 19h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Telefone 8h às 17h</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Ilimitado + até 2 sócios</span>
-                            </div>
-                            <!-- Itens Não Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Assessor dedicado</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon excluded">✗</span>
-                                <span>Reunião de orientação</span>
-                            </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Ouro%20%28R%24%20279%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn featured">Contratar Ouro</a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Platinum -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="modern-pricing-card platinum">
-                        <div class="pricing-header">
-                            <div class="plan-icon">💎</div>
-                            <h3>Platinum</h3>
-                            <div class="price">
-                                <span class="currency">R$</span>
-                                <span class="amount">379</span>
-                                <span class="period">,90/mês</span>
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Contabilidade completa</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="plan-description">Ideal até R$ 200.000 por mês</p>
-                        </div>
-                        <div class="pricing-features">
-                            <!-- Itens Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Contabilidade completa</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Certificado digital gratuito</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Processo de abertura grátis</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Processo de abertura grátis</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Certificado digital gratuito</span>
+
+                            <!-- Category: Atendimento -->
+                            <div class="row feature-row category-header">
+                                <div class="col-3">
+                                    <div class="feature-name">Atendimento</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check gold"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Chat e e-mail 8h às 17h</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Chat e e-mail 8h às 17h</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>WhatsApp 8h às 19h</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">WhatsApp 8h às 19h</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Telefone 8h às 17h</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Telefone 8h às 17h</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Assessor dedicado</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Assessor dedicado</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Reunião de orientação</span>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Reunião de orientação</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Ilimitado + até 3 sócios + 4 funcionários</span>
+
+                            <!-- Category: Emissão de Notas -->
+                            <div class="row feature-row category-header">
+                                <div class="col-3">
+                                    <div class="feature-name">Emissão de Notas Fiscais</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                        <div class="col-3"><div class="feature-check gold"></div></div>
+                                        <div class="col-3"><div class="feature-check"></div></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Platinum%20%28R%24%20379%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="plan-btn">Contratar Platinum</a>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Emissor de notas fiscais</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span class="check-icon included">✓</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon included">✓</span></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row feature-row">
+                                <div class="col-3">
+                                    <div class="feature-name">Usuários do emissor</div>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-3"><div class="feature-check"><span class="check-icon excluded">✗</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span style="font-size: 11px; color: #28a745; font-weight: bold;">1 sócio</span></div></div>
+                                        <div class="col-3"><div class="feature-check gold"><span style="font-size: 11px; color: #28a745; font-weight: bold;">2 sócios</span></div></div>
+                                        <div class="col-3"><div class="feature-check"><span style="font-size: 10px; color: #28a745; font-weight: bold;">3 sócios + 4 funcionários</span></div></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Diamond - Plano Especial -->
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="modern-pricing-card diamond-card">
-                        <div class="premium-badge">Premium</div>
-                        <div class="pricing-header">
-                            <div class="plan-icon">💠</div>
-                            <h3>Diamond</h3>
-                            <div class="price">
-                                <span class="currency">Sob</span>
-                                <span class="amount">Consulta</span>
-                            </div>
-                            <p class="plan-description">Para empresas que precisam de atendimento consultivo e estratégico</p>
+            <!-- MOBILE - Pricing Cards -->
+            <div class="pricing-cards-mobile">
+                <!-- Bronze Plan -->
+                <div class="mobile-plan-card">
+                    <div class="mobile-plan-header">
+                        <div class="mobile-plan-name">Bronze</div>
+                        <div class="mobile-plan-price">
+                            <span class="mobile-price-currency">R$</span>
+                            <span class="mobile-price-amount">119</span>
+                            <span class="mobile-price-period">,90/mês</span>
                         </div>
-                        <div class="pricing-features">
-                            <!-- Itens Incluídos -->
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Assessor dedicado exclusivo</span>
+                        <div class="mobile-plan-description">Ideal até R$ 100.000 por mês</div>
+                    </div>
+                    
+                    <div class="mobile-features-list">
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Contabilidade</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Contabilidade completa</div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Análises estratégicas personalizadas</span>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Certificado digital gratuito</div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Planejamento tributário avançado</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Gestão financeira especializada</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Consultoria para crescimento empresarial</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon included">✓</span>
-                                <span>Atendimento presencial quando necessário</span>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Processo de abertura grátis</div>
                             </div>
                         </div>
-                        <div class="pricing-footer">
-                            <a href="https://www.contabilidademb.com.br/" target="_blank" class="plan-btn diamond">Conheça a MB Assessoria Contábil</a>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Atendimento</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Chat e e-mail 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">WhatsApp 8h às 19h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Telefone 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Assessor dedicado</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Reunião de orientação</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Emissão de Notas</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Emissor de notas fiscais</div>
+                            </div>
                         </div>
                     </div>
+                    
+                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Bronze%20%28R%24%20119%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="mobile-plan-btn">Contratar</a>
+                </div>
+
+                <!-- Prata Plan -->
+                <div class="mobile-plan-card">
+                    <div class="mobile-plan-header">
+                        <div class="mobile-plan-name">Prata</div>
+                        <div class="mobile-plan-price">
+                            <span class="mobile-price-currency">R$</span>
+                            <span class="mobile-price-amount">199</span>
+                            <span class="mobile-price-period">,90/mês</span>
+                        </div>
+                        <div class="mobile-plan-description">Ideal até R$ 100.000 por mês</div>
+                    </div>
+                    
+                    <div class="mobile-features-list">
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Contabilidade</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Contabilidade completa</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Certificado digital gratuito</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Processo de abertura grátis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Atendimento</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Chat e e-mail 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">WhatsApp 8h às 19h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Telefone 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Assessor dedicado</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Reunião de orientação</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Emissão de Notas</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Emissor de notas fiscais</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">1 sócio</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Prata%20%28R%24%20199%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="mobile-plan-btn">Contratar</a>
+                </div>
+
+                <!-- Ouro Plan - FEATURED -->
+                <div class="mobile-plan-card featured">
+                    <div class="mobile-popular-badge">Mais Popular</div>
+                    <div class="mobile-plan-header">
+                        <div class="mobile-plan-name">Ouro</div>
+                        <div class="mobile-plan-price">
+                            <span class="mobile-price-currency">R$</span>
+                            <span class="mobile-price-amount">279</span>
+                            <span class="mobile-price-period">,90/mês</span>
+                        </div>
+                        <div class="mobile-plan-description">Ideal até R$ 100.000 por mês</div>
+                    </div>
+                    
+                    <div class="mobile-features-list">
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Contabilidade</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Contabilidade completa</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Certificado digital gratuito</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Processo de abertura grátis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Atendimento</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Chat e e-mail 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">WhatsApp 8h às 19h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Telefone 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Assessor dedicado</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon excluded">✗</div>
+                                <div class="mobile-feature-text">Reunião de orientação</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Emissão de Notas</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Emissor de notas fiscais</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">2 sócios</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Ouro%20%28R%24%20279%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="mobile-plan-btn featured">Contratar</a>
+                </div>
+
+                <!-- Platinum Plan -->
+                <div class="mobile-plan-card">
+                    <div class="mobile-plan-header">
+                        <div class="mobile-plan-name">Platinum</div>
+                        <div class="mobile-plan-price">
+                            <span class="mobile-price-currency">R$</span>
+                            <span class="mobile-price-amount">379</span>
+                            <span class="mobile-price-period">,90/mês</span>
+                        </div>
+                        <div class="mobile-plan-description">Ideal até R$ 200.000 por mês</div>
+                    </div>
+                    
+                    <div class="mobile-features-list">
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Contabilidade</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Contabilidade completa</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Certificado digital gratuito</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Processo de abertura grátis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Atendimento</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Chat e e-mail 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">WhatsApp 8h às 19h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Telefone 8h às 17h</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Assessor dedicado</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Reunião de orientação</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-feature-category">
+                            <div class="mobile-category-title">Emissão de Notas</div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">Emissor de notas fiscais</div>
+                            </div>
+                            <div class="mobile-feature-item">
+                                <div class="mobile-feature-icon included">✓</div>
+                                <div class="mobile-feature-text">3 sócios + 4 funcionários</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/5511945642854?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Platinum%20%28R%24%20379%2C90%2Fm%C3%AAs%29%20da%20Conecta%20Cont%C3%A1bil.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" class="mobile-plan-btn">Contratar</a>
                 </div>
             </div>
         </div>
@@ -3551,57 +4118,10 @@
     </div>
     <!-- ***** FAQ Section End ***** -->
 
-    <!-- ***** Contact Section Start ***** -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact-modal">
-                        <h4 style="color: white; text-align: center; margin-bottom: 30px;">Entre em Contato</h4>
-                        <form class="contact-form" id="contactForm">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Seu Nome" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="email" name="email" placeholder="Seu E-mail" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="tel" name="phone" placeholder="Seu Telefone" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="text" name="company" placeholder="Nome da Empresa">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <textarea name="message" placeholder="Sua Mensagem" rows="4" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn_red">Enviar Mensagem</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="success-message" id="successMessage">
-                            <p><i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Contact Section End ***** -->
+
 
     <!-- ***** Newsletter Section Start ***** -->
-    <footer id="newsletter">
+    <footer id="contact" class="newsletter-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -3634,6 +4154,14 @@
                         <p>Diadema - SP, 09920-640, Brasil</p>
                         <p><a href="tel:+5511994080776">(11) 99408-0776</a></p>
                         <p><a href="mailto:contato@conectacontabil.com.br">contato@conectacontabil.com.br</a></p>
+                        <div class="social-links">
+                            <a href="https://wa.me/5511945642854?text=Oi%21%20Vim%20do%20site%20da%20Conecta%20Cont%C3%A1bil%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" class="social-link whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.instagram.com/_contabilidademb/" target="_blank" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -3775,12 +4303,29 @@
             $('.menu-trigger').on('click', function() {
                 $(this).toggleClass('active');
                 $('.nav').toggleClass('active');
+                
+                // Prevent scroll when menu is open
+                if ($(this).hasClass('active')) {
+                    $('body').css('overflow', 'hidden');
+                } else {
+                    $('body').css('overflow', 'auto');
+                }
             });
 
             // Close mobile menu when clicking on a link
             $('.nav a').on('click', function() {
                 $('.nav').removeClass('active');
                 $('.menu-trigger').removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
+
+            // Close mobile menu when clicking outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.main-nav').length) {
+                    $('.nav').removeClass('active');
+                    $('.menu-trigger').removeClass('active');
+                    $('body').css('overflow', 'auto');
+                }
             });
 
             // Smooth scrolling for anchor links
@@ -3818,28 +4363,7 @@
                 }
             });
 
-            // Contact form submission
-            $('#contactForm').on('submit', function(e) {
-                e.preventDefault();
-                var form = $(this);
-                var button = form.find('.btn_red');
-                var originalText = button.text();
-                
-                // Show loading
-                button.html('<span class="loading"></span> Enviando...');
-                
-                // Simulate API call
-                setTimeout(function() {
-                    form[0].reset();
-                    $('#successMessage').addClass('show');
-                    button.text(originalText);
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(function() {
-                        $('#successMessage').removeClass('show');
-                    }, 5000);
-                }, 2000);
-            });
+
 
             // Animate elements on scroll
             function animateOnScroll() {
@@ -3865,7 +4389,7 @@
             $(window).scroll(function() {
                 var scrollDistance = $(window).scrollTop();
 
-                $('section, .main-banner, .services-preview, .services, .about-us, .the-clients, .pricing-plans').each(function(i) {
+                $('section, .main-banner, .services-preview, .services, .about-us, .the-clients, .pricing-plans, .faq-section, footer').each(function(i) {
                     if ($(this).position().top <= scrollDistance + 150) {
                         $('.nav a.active').removeClass('active');
                         $('.nav a').eq(i).addClass('active');
@@ -3904,6 +4428,13 @@
                 menuTrigger.addEventListener('click', function() {
                     nav.classList.toggle('active');
                     this.classList.toggle('active');
+                    
+                    // Prevent scroll when menu is open
+                    if (this.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             }
 
@@ -3913,7 +4444,17 @@
                 link.addEventListener('click', function() {
                     nav.classList.remove('active');
                     menuTrigger.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.main-nav')) {
+                    nav.classList.remove('active');
+                    menuTrigger.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
             });
         }
 
@@ -4044,6 +4585,142 @@
         const clientsSection = document.querySelector('.the-clients');
         if (clientsSection) {
             observer.observe(clientsSection);
+        }
+
+        // Header scroll behavior optimization for mobile
+        let ticking = false;
+        
+        function updateHeader() {
+            const header = document.querySelector('.header-area');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+
+        // Prevent zoom on mobile when focusing newsletter input
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            const newsletterInput = document.querySelector('#contact .email, #newsletter .email');
+            if (newsletterInput) {
+                newsletterInput.addEventListener('focus', function() {
+                    this.style.fontSize = '16px';
+                });
+                newsletterInput.addEventListener('blur', function() {
+                    this.style.fontSize = '';
+                });
+            }
+        }
+
+        // Lazy loading for images (basic implementation)
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+
+
+
+        // Smooth scrolling polyfill for older browsers
+        if (!('scrollBehavior' in document.documentElement.style)) {
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            anchors.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = document.querySelector('.header-area').offsetHeight;
+                        const targetPosition = target.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debouncing to scroll-heavy functions
+        const debouncedFloatingCTA = debounce(controlFloatingCTA, 10);
+        window.addEventListener('scroll', debouncedFloatingCTA, { passive: true });
+
+        // Accessibility improvements
+        document.addEventListener('keydown', function(e) {
+            // ESC key closes mobile menu
+            if (e.key === 'Escape') {
+                const nav = document.querySelector('.nav');
+                const menuTrigger = document.querySelector('.menu-trigger');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    menuTrigger.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Add focus management for mobile menu
+        const menuTrigger = document.querySelector('.menu-trigger');
+        if (menuTrigger) {
+            menuTrigger.addEventListener('click', function() {
+                setTimeout(() => {
+                    if (this.classList.contains('active')) {
+                        const firstNavLink = document.querySelector('.nav a');
+                        if (firstNavLink) firstNavLink.focus();
+                    }
+                }, 100);
+            });
+        }
+
+        // Error handling for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                if (this.src.includes('logo')) {
+                    this.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSI1IiB5PSIzMCIgZm9udC1mYW1pbHk9IlJvYm90bywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFGNjVDMCI+Q29uZWN0YTwvdGV4dD4KPHRleHQgeD0iOTAiIHk9IjMwIiBmb250LWZhbWlseT0iUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRUY2QzAwIj5Db250w6FiaWw8L3RleHQ+Cjwvc3ZnPgo=";
+                }
+            });
+        });
+
+        // Initialize everything when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Conecta Contábil website loaded successfully');
+            });
+        } else {
+            console.log('Conecta Contábil website loaded successfully');
         }
     </script>
 </body>
