@@ -1061,32 +1061,46 @@
             color: white;
         }
 
-        /* Clients Section */
+        /* ===== NOVO CARROSSEL DE DEPOIMENTOS ===== */
         .the-clients {
             padding: 100px 0;
             background: #f8f9fa;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(21, 101, 192, 0.08);
-            transition: all 0.4s ease;
-            height: 100%;
-            border: 1px solid rgba(21, 101, 192, 0.06);
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
-        .testimonial-card.animated {
-            opacity: 1;
-            transform: translateY(0);
+        /* Carrossel Container - Padding adequado para as setas */
+        .testimonials-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 70px;
         }
 
-        .testimonial-card::before {
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Testimonial Slide */
+        .testimonial-slide {
+            min-width: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        .testimonial-slide::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1094,121 +1108,221 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #1565C0, #EF6C00);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(21, 101, 192, 0.15);
-            border-color: rgba(21, 101, 192, 0.2);
-        }
-
-        .testimonial-card.animated:hover {
-            transform: translateY(-10px);
-        }
-
-        .testimonial-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(21, 101, 192, 0.1);
-        }
-
-        .client-photo {
-            width: 70px;
-            height: 70px;
-            margin-right: 15px;
+        /* Client Photo - Tamanho reduzido */
+        .client-photo-large {
+            width: 90px;
+            height: 90px;
             position: relative;
+            flex-shrink: 0;
         }
 
-        .client-photo img {
+        .client-photo-large img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.2);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.3);
             transition: all 0.3s ease;
         }
 
-        .testimonial-card:hover .client-photo img {
-            border-color: #EF6C00;
-            transform: scale(1.05);
+        /* Content Area */
+        .testimonial-content-large {
+            flex: 1;
         }
 
-        .client-info h5 {
+        .testimonial-quote {
             font-size: 18px;
+            line-height: 1.5;
+            color: #2C3E50;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .client-info-large {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-details h5 {
+            font-size: 17px;
             font-weight: 700;
             color: #2C3E50;
-            margin-bottom: 5px;
-            line-height: 1.2;
+            margin-bottom: 4px;
         }
 
-        .client-position {
+        .client-position-large {
             font-size: 14px;
             color: #1565C0;
             font-weight: 600;
-            display: block;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
-        .client-company {
+        .client-company-large {
             font-size: 13px;
             color: #666;
-            font-weight: 400;
-            display: block;
         }
 
-        .testimonial-content {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .testimonial-content p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-            margin: 0;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(21, 101, 192, 0.1);
-        }
-
-        .rating {
+        .rating-large {
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
+            margin-left: auto;
         }
 
-        .rating .fas.fa-star {
+        .rating-large .fas.fa-star {
             color: #FFB74D;
-            font-size: 14px;
+            font-size: 16px;
             transition: all 0.3s ease;
         }
 
-        .testimonial-card:hover .rating .fas.fa-star {
-            color: #FF9800;
-            transform: scale(1.1);
-        }
-
-        .rating-text {
+        .rating-large .rating-text {
             font-size: 14px;
             font-weight: 600;
             color: #FF9800;
             margin-left: 8px;
+        }
+
+        /* Navigation Arrows - Posicionadas FORA do conteúdo */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.3);
+        }
+
+        .carousel-nav i {
+            font-size: 16px;
+            color: #1565C0;
+            transition: color 0.3s ease;
+        }
+
+        .carousel-nav:hover i {
+            color: #EF6C00;
+        }
+
+        /* Setas FORA do card */
+        .carousel-prev {
+            left: -60px;
+        }
+
+        .carousel-next {
+            right: -60px;
+        }
+
+        /* Dots Navigation */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(21, 101, 192, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-dot.active {
+            background: #1565C0;
+            transform: scale(1.2);
+        }
+
+        .carousel-dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            transition: border-color 0.3s ease;
+        }
+
+        .carousel-dot.active::after {
+            border-color: rgba(21, 101, 192, 0.3);
+        }
+
+        /* Progress Bar */
+        .carousel-progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(21, 101, 192, 0.1);
+            margin-top: 30px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .carousel-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #1565C0, #EF6C00);
+            width: 0;
+            transition: width 0.1s linear;
+            border-radius: 2px;
+        }
+
+        /* Animation for slide entrance */
+        .testimonial-slide.active .client-photo-large img {
+            animation: photoZoom 0.6s ease-out;
+        }
+
+        .testimonial-slide.active .testimonial-quote {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .testimonial-slide.active .client-info-large {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes photoZoom {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Paused state styling */
+        .testimonials-carousel.paused .carousel-progress-bar {
+            animation-play-state: paused;
         }
 
         /* FAQ Section */
@@ -2012,8 +2126,6 @@
             margin: 0;
         }
 
-
-
         /* Responsive Design - MELHORADO */
         @media (max-width: 992px) {
             /* ESCONDER BOTÃO ÁREA DO CLIENTE NO MOBILE */
@@ -2082,6 +2194,41 @@
 
             .menu-trigger {
                 display: block;
+            }
+
+            /* CARROSSEL RESPONSIVO */
+            .testimonials-carousel {
+                padding: 0 70px;
+            }
+
+            .testimonial-slide {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 25px;
+                gap: 20px;
+            }
+
+            .client-info-large {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .rating-large {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .testimonial-quote {
+                font-size: 16px;
+            }
+
+            .carousel-prev {
+                left: 10px;
+            }
+
+            .carousel-next {
+                right: 10px;
             }
 
             /* HEADER MOBILE MELHORADO */
@@ -2278,26 +2425,6 @@
             .faq-question {
                 padding: 25px;
             }
-
-            /* Responsividade testimonials */
-            .testimonial-card {
-                margin-bottom: 30px;
-            }
-            
-            .testimonial-header {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-            
-            .client-photo {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .client-info {
-                text-align: center;
-            }
         }
 
         @media (max-width: 768px) {
@@ -2311,6 +2438,58 @@
                 opacity: 0 !important;
                 position: absolute !important;
                 left: -9999px !important;
+            }
+
+            /* CARROSSEL MOBILE - Tamanhos menores */
+            .the-clients {
+                padding: 60px 0;
+            }
+
+            .testimonials-carousel {
+                padding: 0 50px;
+            }
+
+            .testimonial-slide {
+                padding: 25px 20px;
+            }
+
+            .client-photo-large {
+                width: 75px;
+                height: 75px;
+            }
+
+            .testimonial-quote {
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+
+            .client-details h5 {
+                font-size: 16px;
+            }
+
+            .client-position-large {
+                font-size: 13px;
+            }
+
+            .client-company-large {
+                font-size: 12px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav i {
+                font-size: 14px;
+            }
+
+            .carousel-prev {
+                left: 5px;
+            }
+
+            .carousel-next {
+                right: 5px;
             }
 
             /* HEADER MOBILE AINDA MAIS OTIMIZADO */
@@ -2538,24 +2717,49 @@
                 padding: 12px 20px;
                 font-size: 14px;
             }
-
-            /* Responsividade testimonials mobile */
-            .testimonial-card {
-                padding: 25px 20px;
-                margin-bottom: 25px;
-            }
-            
-            .client-photo {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .testimonial-content p {
-                font-size: 15px;
-            }
         }
 
         @media (max-width: 576px) {
+            /* CARROSSEL MOBILE PEQUENO */
+            .testimonials-carousel {
+                padding: 0 60px;
+            }
+
+            .testimonial-slide {
+                padding: 20px 15px;
+            }
+
+            .testimonial-quote {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+
+            .client-photo-large {
+                width: 65px;
+                height: 65px;
+            }
+
+            .client-details h5 {
+                font-size: 15px;
+            }
+
+            .carousel-nav {
+                width: 35px;
+                height: 35px;
+            }
+
+            .carousel-nav i {
+                font-size: 12px;
+            }
+
+            .carousel-prev {
+                left: 0px;
+            }
+
+            .carousel-next {
+                right: 0px;
+            }
+
             /* HEADER SUPER COMPACTO */
             .header-area {
                 padding: 8px 0;
@@ -2836,23 +3040,6 @@
                 font-size: 16px;
             }
 
-            /* Responsividade testimonials mobile pequeno */
-            .the-clients {
-                padding: 60px 0;
-            }
-            
-            .testimonial-card {
-                padding: 20px 15px;
-            }
-            
-            .client-info h5 {
-                font-size: 16px;
-            }
-            
-            .testimonial-content p {
-                font-size: 14px;
-            }
-
             /* Social Links Mobile */
             .social-links {
                 margin-top: 15px;
@@ -2906,17 +3093,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         @keyframes fadeInDown {
@@ -3409,7 +3585,7 @@
     </div>
     <!-- ***** About Us Section End ***** -->
 
-    <!-- ***** Clients Section Start ***** -->
+    <!-- ***** NOVO CARROSSEL DE CLIENTES Start ***** -->
     <div id="clients" class="the-clients">
         <div class="container">
             <div class="row">
@@ -3422,94 +3598,171 @@
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-header">
-                            <div class="client-photo">
-                                <img src="Gabriel.jpeg" alt="Gabriel Zanini" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+            <div class="testimonials-carousel">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Slide 1 - Gabriel Zanini -->
+                        <div class="testimonial-slide active">
+                            <div class="client-photo-large">
+                                <img src="Gabriel.jpeg" alt="Gabriel Zanini" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjZjVmNWY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDUiIHI9IjE4IiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik0zMCA5MGMwLTE2LjU2OSAxMy40MzEtMzAgMzAtMzBzMzAgMTMuNDMxIDMwIDMwdjE1SDBWOTB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
                             </div>
-                            <div class="client-info">
-                                <h5>Gabriel Zanini</h5>
-                                <span class="client-position">Advogado</span>
-                                <span class="client-company">Zanini Advogados e Associados</span>
+                            <div class="testimonial-content-large">
+                                <div class="testimonial-quote">
+                                    Contabilidade nota 1000, você nunca vai esquecer de pagar os impostos, o sistema não deixa!
+                                </div>
+                                <div class="client-info-large">
+                                    <div class="client-details">
+                                        <h5>Gabriel Zanini</h5>
+                                        <div class="client-position-large">Advogado</div>
+                                        <div class="client-company-large">Zanini Advogados e Associados</div>
+                                    </div>
+                                    <div class="rating-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">5.0</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="testimonial-content">
-                            <p>"Contabilidade nota 1000, você nunca vai esquecer de pagar os impostos, o sistema não deixa!"</p>
+
+                        <!-- Slide 2 - Thais Graziela -->
+                        <div class="testimonial-slide">
+                            <div class="client-photo-large">
+                                <img src="Thais.jpeg" alt="Thais Graziela" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjZjVmNWY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDUiIHI9IjE4IiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik0zMCA5MGMwLTE2LjU2OSAxMy40MzEtMzAgMzAtMzBzMzAgMTMuNDMxIDMwIDMwdjE1SDBWOTB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="testimonial-content-large">
+                                <div class="testimonial-quote">
+                                    Ótima contabilidade com excelentes profissionais. Trabalhamos há mais de 15 anos juntos e estão sempre dispostos a nos atender bem e sanar todas as nossas dúvidas.
+                                </div>
+                                <div class="client-info-large">
+                                    <div class="client-details">
+                                        <h5>Thais Graziela</h5>
+                                        <div class="client-position-large">Proprietária</div>
+                                        <div class="client-company-large">E-commerce</div>
+                                    </div>
+                                    <div class="rating-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">5.0</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-text">5.0</span>
+
+                        <!-- Slide 3 - Rafael Furlan -->
+                        <div class="testimonial-slide">
+                            <div class="client-photo-large">
+                                <img src="Rafael.jpeg" alt="Rafael Furlan" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjZjVmNWY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDUiIHI9IjE4IiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik0zMCA5MGMwLTE2LjU2OSAxMy40MzEtMzAgMzAtMzBzMzAgMTMuNDMxIDMwIDMwdjE1SDBWOTB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="testimonial-content-large">
+                                <div class="testimonial-quote">
+                                    Acredito que o maior benefício da minha parceria com a Conecta foi poder focar no meu Negócio, eles possuem empatia e cuidado no trato com a minha empresa.
+                                </div>
+                                <div class="client-info-large">
+                                    <div class="client-details">
+                                        <h5>Rafael Furlan</h5>
+                                        <div class="client-position-large">Proprietário</div>
+                                        <div class="client-company-large">Torres IT</div>
+                                    </div>
+                                    <div class="rating-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">5.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 - Fernando Lanes -->
+                        <div class="testimonial-slide">
+                            <div class="client-photo-large">
+                                <img src="Fernando.jpeg" alt="Fernando Lanes" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjZjVmNWY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDUiIHI9IjE4IiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik0zMCA5MGMwLTE2LjU2OSAxMy40MzEtMzAgMzAtMzBzMzAgMTMuNDMxIDMwIDMwdjE1SDBWOTB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="testimonial-content-large">
+                                <div class="testimonial-quote">
+                                    A Conecta sempre foi meu porto seguro quando se trata de contabilidade. Além de cuidarem de toda a burocracia, sempre me ajudam a tomar as melhores decisões. É realmente fundamental para o meu dia a dia!
+                                </div>
+                                <div class="client-info-large">
+                                    <div class="client-details">
+                                        <h5>Fernando Lanes</h5>
+                                        <div class="client-position-large">Proprietário</div>
+                                        <div class="client-company-large">Santech Ambiente Planejado</div>
+                                    </div>
+                                    <div class="rating-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">5.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 - Fabio Martins -->
+                        <div class="testimonial-slide">
+                            <div class="client-photo-large">
+                                <img src="Fabio.jpeg" alt="Fabio Martins" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjZjVmNWY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDUiIHI9IjE4IiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik0zMCA5MGMwLTE2LjU2OSAxMy40MzEtMzAgMzAtMzBzMzAgMTMuNDMxIDMwIDMwdjE1SDBWOTB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
+                            </div>
+                            <div class="testimonial-content-large">
+                                <div class="testimonial-quote">
+                                    A Conecta me traz segurança, respaldo e agilidade nas informações. Depois que entrei para o time conecta consegui focar mais no meu negocio e me despreocupar mais com a parte legal da minha empresa.
+                                </div>
+                                <div class="client-info-large">
+                                    <div class="client-details">
+                                        <h5>Fabio Martins</h5>
+                                        <div class="client-position-large">Proprietário</div>
+                                        <div class="client-company-large">Rede - Despachante RS</div>
+                                    </div>
+                                    <div class="rating-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">5.0</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-nav carousel-prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-nav carousel-next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-header">
-                            <div class="client-photo">
-                                <img src="Thais.jpeg" alt="Thais Graziela" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
-                            </div>
-                            <div class="client-info">
-                                <h5>Thais Graziela</h5>
-                                <span class="client-position">Proprietária</span>
-                                <span class="client-company">E-commerce</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <p>"Ótima contabilidade com excelentes profissionais. Trabalhamos há mais de 15 anos juntos e estão sempre dispostos a nos atender bem e sanar todas as nossas dúvidas."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-text">5.0</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Dots Navigation -->
+                <div class="carousel-dots" id="carouselDots">
+                    <div class="carousel-dot active" data-slide="0"></div>
+                    <div class="carousel-dot" data-slide="1"></div>
+                    <div class="carousel-dot" data-slide="2"></div>
+                    <div class="carousel-dot" data-slide="3"></div>
+                    <div class="carousel-dot" data-slide="4"></div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-header">
-                            <div class="client-photo">
-                                <img src="Rafael.jpeg" alt="Rafael Furlan" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmNWY1ZjUiLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSIzMCIgcj0iMTIiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTIwIDYwYzAtMTEuMDQ2IDguOTU0LTIwIDIwLTIwczIwIDguOTU0IDIwIDIwdjEwSDBWNjB6IiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo='">
-                            </div>
-                            <div class="client-info">
-                                <h5>Rafael Furlan</h5>
-                                <span class="client-position">Proprietário</span>
-                                <span class="client-company">Torres IT</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <p>"Acredito que o maior benefício da minha parceria com a Conecta foi poder focar no meu Negócio, eles possuem empatia e cuidado no trato com a minha empresa."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-text">5.0</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Progress Bar -->
+                <div class="carousel-progress">
+                    <div class="carousel-progress-bar" id="progressBar"></div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ***** Clients Section End ***** -->
+    <!-- ***** NOVO CARROSSEL DE CLIENTES End ***** -->
 
     <!-- ***** Pricing Plans Section Start ***** -->
     <div id="pricing" class="pricing-plans">
@@ -4152,8 +4405,6 @@
     </div>
     <!-- ***** FAQ Section End ***** -->
 
-
-
     <!-- ***** Newsletter Section Start ***** -->
     <footer id="contact" class="newsletter-section">
         <div class="container">
@@ -4254,6 +4505,188 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script>
+        // ===== CLASSE DO CARROSSEL DE DEPOIMENTOS =====
+        class TestimonialsCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.totalSlides = 5;
+                this.autoplayInterval = 6000; // 6 seconds
+                this.autoplayTimer = null;
+                this.progressTimer = null;
+                this.isPaused = false;
+                
+                this.track = document.getElementById('carouselTrack');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.dots = document.querySelectorAll('.carousel-dot');
+                this.progressBar = document.getElementById('progressBar');
+                this.carousel = document.querySelector('.testimonials-carousel');
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.startAutoplay();
+                this.updateProgressBar();
+                this.animateCurrentSlide();
+            }
+
+            bindEvents() {
+                // Arrow navigation
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+                // Dots navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+
+                // Pause on hover
+                this.carousel.addEventListener('mouseenter', () => this.pauseAutoplay());
+                this.carousel.addEventListener('mouseleave', () => this.resumeAutoplay());
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                });
+
+                // Touch events for mobile swipe
+                let startX = 0;
+                let endX = 0;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe(startX, endX);
+                });
+            }
+
+            handleSwipe(startX, endX) {
+                const threshold = 50;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+
+            updateSlide() {
+                const translateX = -this.currentSlide * 100;
+                this.track.style.transform = `translateX(${translateX}%)`;
+                
+                this.updateDots();
+                this.animateCurrentSlide();
+                this.resetProgressBar();
+            }
+
+            updateDots() {
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+
+            animateCurrentSlide() {
+                // Remove active class from all slides
+                document.querySelectorAll('.testimonial-slide').forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Add active class to current slide
+                setTimeout(() => {
+                    document.querySelectorAll('.testimonial-slide')[this.currentSlide].classList.add('active');
+                }, 100);
+            }
+
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateSlide();
+                this.restartAutoplay();
+            }
+
+            prevSlide() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.updateSlide();
+                this.restartAutoplay();
+            }
+
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.updateSlide();
+                this.restartAutoplay();
+            }
+
+            startAutoplay() {
+                this.autoplayTimer = setInterval(() => {
+                    if (!this.isPaused) {
+                        this.nextSlide();
+                    }
+                }, this.autoplayInterval);
+            }
+
+            pauseAutoplay() {
+                this.isPaused = true;
+                this.carousel.classList.add('paused');
+                if (this.progressTimer) {
+                    clearInterval(this.progressTimer);
+                }
+            }
+
+            resumeAutoplay() {
+                this.isPaused = false;
+                this.carousel.classList.remove('paused');
+                this.updateProgressBar();
+            }
+
+            restartAutoplay() {
+                clearInterval(this.autoplayTimer);
+                this.startAutoplay();
+                if (!this.isPaused) {
+                    this.updateProgressBar();
+                }
+            }
+
+            updateProgressBar() {
+                if (this.progressTimer) {
+                    clearInterval(this.progressTimer);
+                }
+
+                this.progressBar.style.width = '0%';
+                
+                let progress = 0;
+                const increment = 100 / (this.autoplayInterval / 100);
+
+                this.progressTimer = setInterval(() => {
+                    if (!this.isPaused) {
+                        progress += increment;
+                        this.progressBar.style.width = `${Math.min(progress, 100)}%`;
+                        
+                        if (progress >= 100) {
+                            clearInterval(this.progressTimer);
+                        }
+                    }
+                }, 100);
+            }
+
+            resetProgressBar() {
+                if (this.progressTimer) {
+                    clearInterval(this.progressTimer);
+                }
+                this.progressBar.style.width = '0%';
+                if (!this.isPaused) {
+                    this.updateProgressBar();
+                }
+            }
+        }
+
         // Simple preloader removal - works without jQuery
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
@@ -4397,8 +4830,6 @@
                 }
             });
 
-
-
             // Animate elements on scroll
             function animateOnScroll() {
                 $('.animate-on-scroll').each(function() {
@@ -4435,6 +4866,9 @@
             $('.wow').each(function() {
                 $(this).css('visibility', 'visible');
             });
+
+            // Initialize testimonials carousel
+            new TestimonialsCarousel();
         }
 
         function startBasicFunctionality() {
@@ -4490,6 +4924,9 @@
                     document.body.style.overflow = 'auto';
                 }
             });
+
+            // Initialize testimonials carousel
+            new TestimonialsCarousel();
         }
 
         // Initialize the application
@@ -4582,45 +5019,6 @@
             statsObserver.observe(credibilityStats);
         }
 
-        // Auto-animar cards dos depoimentos quando a seção aparecer na tela
-        function animateTestimonialCards() {
-            const cards = document.querySelectorAll('.testimonial-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('animated');
-                }, index * 150); // 150ms de delay entre cada card
-            });
-        }
-
-        // Executar quando a página carregar
-        setTimeout(animateTestimonialCards, 1000);
-
-        // Ou executar com Intersection Observer para animar quando aparecer na tela
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const cards = entry.target.querySelectorAll('.testimonial-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('animated');
-                        }, index * 150);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observar a seção de clientes
-        const clientsSection = document.querySelector('.the-clients');
-        if (clientsSection) {
-            observer.observe(clientsSection);
-        }
-
         // Header scroll behavior optimization for mobile
         let ticking = false;
         
@@ -4673,8 +5071,6 @@
         });
 
         images.forEach(img => imageObserver.observe(img));
-
-
 
         // Smooth scrolling polyfill for older browsers
         if (!('scrollBehavior' in document.documentElement.style)) {
@@ -4751,10 +5147,20 @@
         // Initialize everything when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                console.log('Conecta Contábil website loaded successfully');
+                console.log('Conecta Contábil website with modern carousel loaded successfully');
+                // Initialize carousel if not already done
+                if (!window.carouselInitialized) {
+                    new TestimonialsCarousel();
+                    window.carouselInitialized = true;
+                }
             });
         } else {
-            console.log('Conecta Contábil website loaded successfully');
+            console.log('Conecta Contábil website with modern carousel loaded successfully');
+            // Initialize carousel if not already done
+            if (!window.carouselInitialized) {
+                new TestimonialsCarousel();
+                window.carouselInitialized = true;
+            }
         }
     </script>
 </body>
